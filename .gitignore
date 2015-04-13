@@ -18,3 +18,4 @@
 
 /config/database.yml
 /public
+/config/environments/production.rb
