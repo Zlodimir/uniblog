@@ -1,0 +1,27 @@
+  <h2>Пользователи</h2>
+  <p>Список всех пользователей, зарегистрированных на сайте:</p>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do | user | %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= user.lastname %></td>
+          <td><%= user.firstname %></td>
+          <td>
+            <%= link_to user.email, user_path(user) %>
+            <% if user.admin? %>
+              <span class="label label-success">Admin</span>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>

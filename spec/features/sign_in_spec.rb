@@ -12,6 +12,6 @@ RSpec.feature "User can sign in" do
 		click_button "Вход"
 
 		expect(page).to have_content("Вход в систему выполнен")
-		expect(page).to have_content("Вы вошли как #{user.firstname} #{user.lastname} (#{user.email})")
+		expect(page).to have_content(user.email)
 	end
 end

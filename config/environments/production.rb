@@ -65,14 +65,22 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-  :address => "smtp.gmail.com",
+  :address => "smtp.mandrillapp.com",
   :port => "587",
-  :domain => "gmail.com",
   :authentication => "plain",
-  :user_name => "freenotificationz@gmail.com",
-  :password => "fucking_service",
+  :user_name => "sslupinos@gmail.com",
+  :password => "0SaOzB2KdNhJmFNi4E0vHg",
   :enable_starttls_auto => true 
   }
+  #config.action_mailer.smtp_settings = {
+  #:address => "smtp.gmail.com",
+  #:port => "587",
+  #:domain => "gmail.com",
+  #:authentication => "plain",
+  #:user_name => "freenotificationz@gmail.com",
+  #:password => "fucking_service",
+  #:enable_starttls_auto => true 
+  #}
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).

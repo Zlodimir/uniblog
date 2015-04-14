@@ -1,0 +1,25 @@
+<div class="page-header">
+	<h2><%= @user.email %></h2>
+
+	<ul class="actions">
+		<li><%= link_to "Редактировать", edit_user_path(@user), class: "edit" %></li>
+		<% admin_only do %>
+			<li>
+				<%= link_to "Удалить",
+				admin_user_path(@user),
+				method: :delete,
+				data: {confirm: "Вы действительно хотите удалить данного пользователя?"},
+				class: "delete"
+				%>
+			</li>
+		<% end %>
+	</ul>
+</div>
+<% if @user.admin? %>
+  <h4>Администратор</h4>
+<% else %>
+  <h4>Пользователь</h4>
+<% end %>
+<h4><%= @user.firstname %></h4>
+<h4><%= @user.lastname %></h4>
+<h4><%= @user.email %></h4>

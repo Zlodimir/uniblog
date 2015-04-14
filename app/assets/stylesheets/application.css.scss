@@ -25,6 +25,17 @@
 	}
 }
 
+ul.actions {
+	list-style-type: none;
+	position: absolute;
+	top: 4px;
+	right: 2px;
+
+	li {
+		display: inline-block;
+	}
+}
+
 a.new, a.edit, a.delete {
 	@extend .btn;
 
@@ -77,4 +88,13 @@ form {
 
 p#author {
 	font-style: italic;
+}
+
+.col-md-4 h2 {
+	font-size: 13px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	font-weight: bold;
+	color: #959595;
+	padding-left: 15px;
 }

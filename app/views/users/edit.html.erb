@@ -1,0 +1,12 @@
+<div class="page-header">
+	<h2><%= @user.email %></h2>
+</div>
+
+<%= simple_form_for [@user] do | f | %>
+	<%= f.input :lastname, label: "Фамилия" %>
+	<%= f.input :firstname, label: "Имя" %>
+	<%= f.input :password, label: "Пароль"%>
+	<%= f.input :admin, label: "Администратор?" %>
+
+	<%= f.button :submit, class: "btn btn-primary", label: "Сохранить" %>
+<% end %>
