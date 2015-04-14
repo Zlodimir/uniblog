@@ -1,0 +1,19 @@
+uniblog:
+  ruby_version: 2.2.1
+  environment: production # RAILS_ENV
+  domains:
+    - uniblog.shellyapp.com
+  servers:
+    app1:
+      size: small
+      thin: 2
+      # delayed_job: 1
+      # sidekiq: 1
+      # clockwork: on
+      # whenever: on
+      # elasticsearch: on
+      databases:
+        - postgresql
+        # - mysql
+        # - mongodb
+        # - redis
