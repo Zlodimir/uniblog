@@ -5,6 +5,5 @@ class ItemsController < ApplicationController
 
   def show
   	@item = Item.find(params[:id])
-  	@items_short = Item.order("created_at ASC").limit(10)
   end
 end
