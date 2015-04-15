@@ -3,8 +3,11 @@ require 'rails_helper'
 RSpec.feature "User can sign in" do
 	let!(:user) {FactoryGirl.create(:user)}
 
-	scenario "with valid credentials" do
+	before do
 		visit "/"
+	end
+
+	scenario "with valid credentials" do
 		click_link "Войти"
 
 		fill_in "E-mail", with: user.email

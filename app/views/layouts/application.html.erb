@@ -10,15 +10,22 @@
   <nav class="navbar navbar-inverse"> <!-- navbar-fixed-top -->
     <div class="container">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">WebSiteName</a>
+        <%= link_to 'Докторова Т.С.', root_path, class: "navbar-brand" %>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
           <li class="<%= "active" if current_page?("/") %>"><%= link_to "/", root_path %></li>
-          <li><a href="#">Page 2</a></li>
-          <li><a href="#">Page 3</a></li>
-          <% admin_only do %>
-            <li class="<%= 'active' if current_page?(controller: 'admin/users') || current_page?(controller: 'admin/base') || current_page?(controller: 'admin/items')%>"><%= link_to "Админка", admin_root_path %></li>
+          <% if controller.class.name.split("::").first == 'Admin' %>
+            <li class='<%= 'active' if params[:controller] == 'admin/base' %>'><%= link_to "Админка", admin_root_path %></li>
+            <% if params[:controller] == 'admin/users' %>
+              <li class='active'><%= link_to "Пользователи", admin_users_path %></li>
+            <% end %>
+            <% if params[:controller] == 'admin/items' %>
+              <li class='active'><%= link_to "Новости", admin_items_path %></li>
+            <% end %>
+          <% end %>
+          <% if params[:controller] == 'items' %>
+            <li class='active'><%= link_to "Новости", items_path %></li>
           <% end %>
         </ul>
         <ul class="nav navbar-nav navbar-right">
@@ -52,8 +59,8 @@
     <div class="row">
       <div class="col-md-2">
         <ul class="nav nav-pills nav-stacked">
-          <li class="active"><a href="#" class="list-group-item">Home <span class="badge">12</span></a></li>
-          <li><a href="#" class="list-group-item">Новости<span class="badge"><%= Item.count %></span></a></li>
+          <li class='<%= 'active' if current_page?('/') %>'><%= link_to 'Главная', root_path, class: 'list-group-item' %></li>
+          <li class='<%= 'active' if params[:controller] == 'items' %>'><%= link_to 'Новости', items_path, class: 'list-group-item' %></li>
           <li><a href="#" class="list-group-item">Menuebat<span class="badge">12</span></a></li>
           <li><a href="#" class="list-group-item">Menukopat<span class="badge">12</span></a></li>
         </ul>
@@ -63,12 +70,17 @@
       </div>
       <div class="col-md-3">
       	<h3 class='text-center'>Новости</h3>
-        <% Item.order("created_at ASC").limit(10).each do | item | %>
-          <p><%= localize(item.created_at, :format => :long) %> - <%= link_to item.title, item_path(item) %></p>
-        <% end %>
+        <table class="table table-hover">
+          <tbody>
+            <% Item.order("created_at DESC").limit(10).each do | item | %>
+              <tr>
+                <td><%= localize(item.created_at, :format => :long) %> - <%= link_to item.title, item_path(item) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= link_to "Все новости", items_path %>
       </div>
   </div>
-
-
 </body>
 </html>

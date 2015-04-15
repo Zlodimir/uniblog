@@ -41,7 +41,6 @@ gem "simple_form", "3.1.0"
 
 gem "devise", "~>3.4.1"
 
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -60,4 +59,5 @@ group :test do
 	gem "factory_girl_rails", "~> 4.5"
   gem "selenium-webdriver", "~> 2.45.0"
   gem "email_spec", "~> 1.6.0"
+  gem "database_cleaner", "~> 1.4.0"
 end
