@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  get 'items/index'
+  #get 'items/index'
 
-  get 'items/show'
+  #get 'items/show'
 
   namespace :admin do
     root 'base#index'
