@@ -1,0 +1,32 @@
+<div class='page-header'>
+  <h3>Новости</h3>
+  <ul class="actions">
+    <li><%= link_to "Создать", new_admin_item_path, class: "new" %></li>
+  </ul>
+</div>
+
+  <p>Список всех созданных новостей:</p>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Название</th>
+        <th>Автор</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @items.each do | item | %>
+        <tr>
+          <td><%= item.id %></td>
+          <td><%= link_to item.title, admin_item_path(item) %></td>
+          <td>
+            <%= item.author.firstname + ' ' + item.author.lastname + item.author.email %>
+           <% if item.author.admin? %>
+              <span class="label label-success">Admin</span>
+            <% end %>
+          </td>
+          <td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>

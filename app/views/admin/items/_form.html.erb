@@ -1,0 +1,6 @@
+
+<%= simple_form_for([:admin, item]) do |f| %>
+	<%= f.input :title, label: 'Заголовок' %>
+	<%= f.input :description, label: 'Описание' %>
+	<%= f.button :submit, class: "btn-primary" %>
+<% end %>

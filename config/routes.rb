@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
+  get 'items/index'
+
+  get 'items/show'
+
   namespace :admin do
     root 'base#index'
     resources :users, only: [:index, :destroy]
+    resources :items, only: [:show, :index, :new, :update, :destroy, :create, :edit]
   end
 
   devise_for :users
@@ -62,5 +67,6 @@ Rails.application.routes.draw do
   root "pages#index"
 
   resources :users, only: [:show, :edit, :update]
+  resources :items, only: [:show, :index]
 end
 

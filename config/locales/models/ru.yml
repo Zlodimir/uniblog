@@ -1,0 +1,10 @@
+ru:
+  activerecord:
+    models:
+      user: Пользователь
+      item: Новость
+    attributes:
+      profile:
+        lastname: Фамилия
+        firstname: Имя
+

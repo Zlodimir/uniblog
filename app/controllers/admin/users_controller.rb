@@ -16,8 +16,8 @@ class Admin::UsersController < Admin::BaseController
 
   def set_user
     @user = User.find(params[:id])
-	rescue ActiveRecord::RecordNotFound
-	flash[:alert] = "Пользователб не найден"
-	redirect_to admin_users_path
+	  rescue ActiveRecord::RecordNotFound
+	  flash[:alert] = "Пользователб не найден"
+	  redirect_to admin_users_path
   end
 end

@@ -1,13 +1,5 @@
-<div class="row">
-  <div class="col-md-8">
-	<header>
-    <h3>Административная часть</h3>
-    </header>
-  </div>
-  <div class="col-md-4">
-    <h2>Администрирование</h2>
-      <ul class="nav nav-stacked">
-        <li><%= link_to " Пользователи", admin_users_path, class: 'glyphicon glyphicon-eye-open' %></li>
-    </ul>
-  </div>
-</div>
+<h3 class="pull-center">Администрирование</h3>
+<ul class="nav nav-stacked">
+  <li><%= link_to " Пользователи", admin_users_path, class: 'glyphicon glyphicon-eye-open' %></li>
+  <li><%= link_to " Новости", admin_items_path, class: 'glyphicon glyphicon-th-list' %></li>
+</ul>

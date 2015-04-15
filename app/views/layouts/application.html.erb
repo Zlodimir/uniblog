@@ -18,7 +18,7 @@
           <li><a href="#">Page 2</a></li>
           <li><a href="#">Page 3</a></li>
           <% admin_only do %>
-            <li class="<%= 'active' if current_page?(controller: 'admin/users') || current_page?(controller: 'admin/base')%>"><%= link_to "Админка", admin_root_path %></li>
+            <li class="<%= 'active' if current_page?(controller: 'admin/users') || current_page?(controller: 'admin/base') || current_page?(controller: 'admin/items')%>"><%= link_to "Админка", admin_root_path %></li>
           <% end %>
         </ul>
         <ul class="nav navbar-nav navbar-right">
@@ -51,13 +51,18 @@
     <% end %>
     <div class="row">
       <div class="col-md-2">
-      	<h3></h3>
+        <ul class="nav nav-pills nav-stacked">
+          <li class="active"><a href="#" class="list-group-item">Home <span class="badge">12</span></a></li>
+          <li><a href="#" class="list-group-item">Menuga<span class="badge">12</span></a></li>
+          <li><a href="#" class="list-group-item">Menuebat<span class="badge">12</span></a></li>
+          <li><a href="#" class="list-group-item">Menukopat<span class="badge">12</span></a></li>
+        </ul>
       </div>
       <div class="col-md-7">
       	<%= yield %>
       </div>
       <div class="col-md-3">
-      	<h3></h3>
+      	<h>Новости</h3>
       </div>
   </div>
 
