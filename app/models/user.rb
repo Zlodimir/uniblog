@@ -11,4 +11,6 @@ class User < ActiveRecord::Base
   def to_s
   	"#{firstname} #{lastname} #{email} (#{admin? ? "Админ" : "Пользователь"})"
   end
+
+  paginates_per 15
 end

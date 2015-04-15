@@ -16,10 +16,11 @@
         <td><%= localize(item.created_at, :format => :long) %></td>
         <td><%= link_to item.title, item_path(item) %></td>
         <td>
-          <%= item.author.firstname + ' ' + item.author.lastname + item.author.email %>
+          <%= item.author.firstname + ' ' + item.author.lastname + ' ' + item.author.email %>
         </td>
         <td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<div class='text-center'><%= paginate @items %></div>

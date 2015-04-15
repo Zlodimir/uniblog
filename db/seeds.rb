@@ -5,12 +5,21 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-if User.exists?(email: "sslupinos@gmail.com") 
-	u = User.where(email: "sslupinos@gmail.com").first
-	u.destroy
+#if User.exists?(email: "sslupinos@gmail.com") 
+	#u = User.where(email: "sslupinos@gmail.com").first
+	#u.destroy
+#end
+
+unless User.exists?(email: "sslupinos@gmail.com")
+	User.create(email: "sslupinos@gmail.com", password: "123456789", firstname: "Сергей", lastname: "Лc", 
+		confirmed_at: DateTime.now, confirmation_token: "", confirmation_sent_at: DateTime.now, admin: true)
 end
 
-unless User.exists?(email: "sslupinos@gmail.com") 
-	User.create(email: "sslupinos@gmail.com", password: "main_chain", firstname: "Сергей", lastname: "Лc", 
-		confirmed_at: DateTime.now, confirmation_token: "", confirmation_sent_at: DateTime.now, admin: true)
+u = User.where(email: 'sslupinos@gmail.com').first
+
+100.times do |num|
+	title = 'Title of the news № ' + num.to_s
+	if not Item.exists?(title: title)
+		Item.create(title: title, description: 'description of the news ' + num.to_s, author: u)
+	end
 end

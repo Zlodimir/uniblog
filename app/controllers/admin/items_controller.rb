@@ -2,7 +2,7 @@ class Admin::ItemsController < Admin::BaseController
 	before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   	def index
-  		@items = Item.order(:title)
+  		@items = Item.order('created_at desc').page params[:page]
   	end
 
   	def show
