@@ -11,7 +11,7 @@ Rails.application.configure do
   config.eager_load = true
 
   # Full error reports are disabled and caching is turned on.
-  config.consider_all_requests_local       = true
+  config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
@@ -66,11 +66,11 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-  :address => ENV['MAILGUN_SMTP_SERVER'],
-  :port => ENV['MAILGUN_SMTP_PORT'],
+  :address => 'smtp.mandrillapp.com',,
+  :port => '587',
   :authentication => "plain",
-  :user_name => ENV['MAILGUN_SMTP_LOGIN'],
-  :password => ENV['MAILGUN_SMTP_PASSWORD'],
+  :user_name => ENV['MANDRILL_USERNAME'],
+  :password => ENV['MANDRILL_APIKEY'],
   :domain => 'doctorova-ts.herokuapp.com',
   :enable_starttls_auto => true 
   }
