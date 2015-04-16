@@ -66,13 +66,20 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-  :address => 'smtp.mandrillapp.com',
-  :port => '587',
+  #:address => 'smtp.mandrillapp.com',
+  #:port => '587',
+  #:authentication => "plain",
+  #:user_name => ENV['MANDRILL_USERNAME'],
+  #:password => ENV['MANDRILL_APIKEY'],
+  #:domain => 'doctorova-ts.herokuapp.com',
+  #:enable_starttls_auto => true
+  :address => ENV['MAILGUN_SMTP_SERVER'],
+  :port => ENV['MAILGUN_SMTP_PORT'],
   :authentication => "plain",
-  :user_name => ENV['MANDRILL_USERNAME'],
-  :password => ENV['MANDRILL_APIKEY'],
+  :user_name => ENV['MAILGUN_SMTP_LOGIN'],
+  :password => ENV['MAILGUN_SMTP_PASSWORD'],
   :domain => 'doctorova-ts.herokuapp.com',
-  :enable_starttls_auto => true 
+  :enable_starttls_auto => true
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
