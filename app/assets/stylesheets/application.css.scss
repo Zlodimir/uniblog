@@ -2,6 +2,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
+@import "bootsy";
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -83,7 +84,7 @@ a.delete {
 	@extend .alert-danger;
 }
 
-form {
+form:not(.longf) {
 	max-width: 500px;
 }
 

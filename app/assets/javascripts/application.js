@@ -12,5 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap-sprockets
+//= require bootsy
 //= require turbolinks
 //= require_tree .
+
+$(document).on("ready page:change", function() {
+    $('[data-toggle="tooltip"]').tooltip();
+});

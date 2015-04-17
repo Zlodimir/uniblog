@@ -15,5 +15,5 @@
 		<% end %>
 	</ul>
 </div>
-<p><%= @item.description %>
+<p><%= @item.description.html_safe %></p>
 <p id='author'>Создано: <%= @item.author %>, <%= time_ago_in_words(@item.created_at) %> назад</p>
