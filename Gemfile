@@ -43,6 +43,12 @@ gem "devise", "~>3.4.1"
 
 gem 'kaminari'
 
+gem "carrierwave", "~> 0.10.0"
+
+gem 'aws-s3', '~> 0.6.3'
+
+gem 'fog', '~> 1.16.0'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

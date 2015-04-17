@@ -8,7 +8,10 @@ RSpec.feature "Admin can create news" do
 		visit "/"
 		
 		click_link "Админка"
-		click_link "Новости"
+		#click_link "Новости"
+		within first(".col-md-7 .nav-stacked") do
+  		  first(:link, "Новости").click
+		end
 		click_link "Создать"
 
 		fill_in "Заголовок", with: "Сантехник Иванов сбрил бороду"

@@ -1,5 +1,5 @@
 <div class="page-header">
-	<h2><%= @user.email %></h2>
+	<h2>Пользователь</h2>
 
 	<ul class="actions">
 		<li><%= link_to "Редактировать", edit_user_path(@user), class: "edit" %></li>
@@ -15,11 +15,24 @@
 		<% end %>
 	</ul>
 </div>
-<% if @user.admin? %>
-  <h4>Администратор</h4>
-<% else %>
-  <h4>Пользователь</h4>
-<% end %>
-<h4><%= @user.firstname %></h4>
-<h4><%= @user.lastname %></h4>
-<h4><%= @user.email %></h4>
+<div class="row">
+	<div class="col-md-3">
+		<% if @user.avatar.blank? %>
+		  <%= image_tag AWS::S3::S3Object.url_for('no_photo.jpg', 'doctorova', :authenticated => true), :size => "120"  %>
+		<% else %>
+		  <%= image_tag @user.avatar_url.to_s,  :size => "120" %>
+		<% end %>
+	</div>
+    <div class="col-md-9">
+		<h4>Статус: 
+			<% if @user.admin? %>
+		  		<strong>Администратор</strong>
+			<% else %>
+		  		<strong><h4>Пользователь</strong>
+			<% end %>
+		</h4>
+		<h4>Имя: <strong><%= @user.firstname %></strong></h4>
+		<h4>Фамилия: <strong><%= @user.lastname %></strong></h4>
+		<h4>E-mail: <strong><%= @user.email %></strong></h4>
+	</div>
+</div>

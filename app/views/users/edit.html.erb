@@ -7,6 +7,7 @@
 	<%= f.input :firstname, label: "Имя" %>
 	<%= f.input :password, label: "Пароль"%>
 	<%= f.input :admin, label: "Администратор?" %>
-
+	<h4>Фото</h4>
+	<%= f.input :avatar, as: :file, label: "Файл" %>
 	<%= f.button :submit, class: "btn btn-primary", label: "Сохранить" %>
 <% end %>

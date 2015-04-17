@@ -7,14 +7,18 @@ class UsersController < ApplicationController
   end
 
   def edit
+    #@asset = @user.build_asset
   end
 
   def update
     if params[:user][:password].blank?
       params[:user].delete(:password)
     end
-
-    if @user.update(user_params)
+    @user.attributes = user_params
+    @user.avatar = params[:user][:avatar]
+    #byebug
+    if @user.save(user_params)
+      # Cool, you're done!
       flash[:notice] = "Пользователь изменен"
       redirect_to user_path(@user)
     else
@@ -35,13 +39,13 @@ class UsersController < ApplicationController
   end
 
   def user_params
-	 params.require(:user).permit(:lastname, :firstname, :email, :password, :admin)
+	 params.require(:user).permit(:lastname, :firstname, :email, :password, :admin, :avatar)
   end
 
   def set_user
     @user = User.find(params[:id])
 	  rescue ActiveRecord::RecordNotFound
 	  flash[:alert] = "Пользователь не найден"
-	  redirect_to admin_users_path
+	  redirect_to root_path
   end
 end

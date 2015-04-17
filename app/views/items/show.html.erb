@@ -1,5 +1,5 @@
 <div class="page-header">
 	<h3><%= @item.title %></h3>
 </div>
-<p><%= @item.description %>
+<p class="lead"><%= @item.description %></p>
 <p id='author'>Создано: <%= @item.author %>, <%= time_ago_in_words(@item.created_at) %> назад</p>
