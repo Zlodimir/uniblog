@@ -18,7 +18,11 @@
 <div class="row">
 	<div class="col-md-3">
 		<% if @user.avatar.blank? %>
-		  <%= image_tag AWS::S3::S3Object.url_for('no_photo.jpg', 'doctorova', :authenticated => true), :size => "120"  %>
+		  <% if Rails.env.production? %>
+		    <%= image_tag AWS::S3::S3Object.url_for('no_photo.jpg', 'doctorova', :authenticated => true), :size => "120"  %>
+		  <% else %>
+		    <%= image_tag 'no_photo.jpg',  :size => "120" %>
+		  <% end %>
 		<% else %>
 		  <%= image_tag @user.avatar_url.to_s,  :size => "120" %>
 		<% end %>
