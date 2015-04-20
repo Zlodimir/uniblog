@@ -2,6 +2,10 @@
 	<h3>Добавить комментарий</h3>
 </header>
 <%= simple_form_for [item, comment] do |f| %>
-	<%= f.input :text, label: 'Комментарий' %>
+	<% if user_signed_in? %>
+		<%= f.input :text, label: 'Комментарий', placeholder: 'Введите текст' %>
+	<% else %>
+		<%= f.input :text, label: 'Комментарий', :disabled => true, placeholder: 'Вам необходимо зарегистрироваться или войти на сайт для того, чтобы оставлять комментарии' %>
+	<% end %>
 	<%= f.submit 'Прокомментировать', class: "btn btn-primary" %>
 <% end %>

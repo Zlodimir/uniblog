@@ -7,9 +7,8 @@ class Admin::UsersController < Admin::BaseController
 
   def destroy
   	@user.destroy
-
-	flash[:notice] = "Пользователь удален"
-	redirect_to admin_users_path
+	  flash[:notice] = "Пользователь удален"
+	  redirect_to admin_users_path
   end
 
   private

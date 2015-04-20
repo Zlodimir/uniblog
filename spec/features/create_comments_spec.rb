@@ -25,4 +25,13 @@ RSpec.feature "User can comment on item" do
 
 		expect(page).to have_content("Комментарий не создан")
 	end
+
+	scenario "not logined user can not create comment" do
+		click_link 'Выход'
+		visit item_path(item)
+		#fill_in "Комментарий", with: "Added a comment!"
+		click_button "Прокомментировать"
+
+		expect(page).to have_content("Комментарий не создан")
+	end
 end

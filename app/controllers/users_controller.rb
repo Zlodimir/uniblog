@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   private
 
   def check_current_user
-  	if current_user.try(:admin?) == false
+  	if current_user.try(:admin?) == false || current_user.try(:admin?).nil?
   		if @user != current_user
   			flash[:alert] = "Ошибка!"
   			redirect_to root_path

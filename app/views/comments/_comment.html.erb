@@ -1,7 +1,21 @@
-<blockquote class="comment">
-  <%= simple_format(comment.text) %>
-  <footer>
-    <%= time_ago_in_words(comment.created_at) %> назад
-    пользователем <cite><%= comment.author %></cite>
-  </footer>
-</blockquote>
+<div class='row'>
+	<div class="col-md-2">
+		<% if comment.author.avatar.blank? %>
+			<% if Rails.env.production? %>
+		    	<%= image_tag AWS::S3::S3Object.url_for('no_photo.jpg', 'doctorova', :authenticated => true), :size => "120"  %>
+		  	<% else %>
+		    	<%= image_tag 'no_photo.jpg',  :size => "120" %>
+		  	<% end %>
+		<% else %>
+		  <%= image_tag comment.author.avatar_url.to_s,  :size => "120" %>
+		<% end %>
+	</div>
+	<div class="col-md-10">
+	  <blockquote class="comment">
+	    <p><%= simple_format(comment.text) %></p>
+	    <footer>
+	      <%= time_ago_in_words(comment.created_at) %> назад пользователем <cite><%= comment.author %></cite>
+	    </footer>
+	  </blockquote>
+	</div>
+</div>
