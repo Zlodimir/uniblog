@@ -70,5 +70,6 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update]
   resources :items, only: [:show, :index]
   resources :assets, only: [:show, :new], path: :files
+  resources :articles
 end
 
