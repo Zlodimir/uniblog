@@ -44,6 +44,17 @@ ActiveRecord::Schema.define(version: 20150420123112) do
     t.datetime "updated_at"
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.text     "text"
+    t.integer  "item_id"
+    t.integer  "author_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "comments", ["author_id"], name: "index_comments_on_author_id", using: :btree
+  add_index "comments", ["item_id"], name: "index_comments_on_item_id", using: :btree
+
   create_table "items", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
@@ -87,5 +98,7 @@ ActiveRecord::Schema.define(version: 20150420123112) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "comments", "items"
+  add_foreign_key "comments", "users", column: "author_id"
   add_foreign_key "items", "users", column: "author_id"
 end

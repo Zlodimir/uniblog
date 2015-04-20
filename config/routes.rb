@@ -70,6 +70,10 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update]
   resources :items, only: [:show, :index]
   resources :assets, only: [:show, :new], path: :files
+
+  resources :items, only: [] do
+    resources :comments, only: [:create]
+  end
   resources :articles
 end
 

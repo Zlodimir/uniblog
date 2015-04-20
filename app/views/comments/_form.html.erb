@@ -1,0 +1,7 @@
+<header>
+	<h3>Добавить комментарий</h3>
+</header>
+<%= simple_form_for [item, comment] do |f| %>
+	<%= f.input :text, label: 'Комментарий' %>
+	<%= f.submit 'Прокомментировать', class: "btn btn-primary" %>
+<% end %>
