@@ -1,5 +1,23 @@
 <div class="page-header">
 	<h3><%= @item.title %></h3>
 </div>
-<p class="lead"><%= @item.description.html_safe %></p>
-<p id='author'>Создано: <%= @item.author %>, <%= time_ago_in_words(@item.created_at) %> назад</p>
+<p><%= @item.description.html_safe %></p>
+
+<blockquote>
+  <footer>
+    <cite>Создано: <%= @item.author %>, <%= time_ago_in_words(@item.created_at) %> назад</cite>
+  </footer>
+</blockquote>
+
+<header>
+  <h3>Комментарии</h3>
+</header>
+<div id='comments'>
+  <% if @item.comments.select(&:persisted?).any? %>
+    <%= render @item.comments.select(&:persisted?) %>
+  <% else %>
+    <p>Комментарии отсутствуют</p>
+  <% end %>
+</div>
+
+<%= render "comments/form", item: @item, comment: @comment %>
