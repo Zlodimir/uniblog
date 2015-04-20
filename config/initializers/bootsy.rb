@@ -46,7 +46,7 @@ Bootsy.setup do |config|
   #
   #
   # Whether user can destroy uploaded files
-  # config.allow_destroy = true
+   config.allow_destroy = true
   #
   #
   # Storage mode
@@ -55,12 +55,12 @@ Bootsy.setup do |config|
   #   'fog' to your Gemfile and create and configure your credentials in an
   #   initializer file, as described in Carrierwave's docs:
   #   https://github.com/carrierwaveuploader/carrierwave#using-amazon-s3
-  # config.storage = :file
+   config.storage = :file
   #
   #
   # Store directory (inside 'public') for storage = :file
   #   BE CAREFUL! Changing this may break previously uploaded file paths!
-  # config.store_dir = 'uploads'
+   config.store_dir = 'uploads'
   #
   #
   # Specify the controller to inherit from. Using ApplicationController

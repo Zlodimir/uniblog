@@ -52,6 +52,6 @@ class Admin::ItemsController < Admin::BaseController
 	end
 
 	def item_params
-		params.require(:item).permit(:title, :description)
+		params.require(:item).permit(:title, :description, :bootsy_image_gallery_id)
 	end
 end

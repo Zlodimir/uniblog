@@ -40,10 +40,10 @@
         <% end %>
           <% if user_signed_in? %>
             <li>
-                <%= link_to ' ' + current_user.email, user_path(current_user), class: "glyphicon glyphicon-user" %>
+                <%= link_to ' ' + current_user.email, user_path(current_user), class: "glyphicon glyphicon-user", data: {toggle: "tooltip", placement: "bottom"}, title: "Ваш профиль" %>
             </li>
             <li>
-              <%= link_to ' Выход', destroy_user_session_path, method: :delete, class: 'glyphicon glyphicon-log-out' %>
+              <%= link_to ' Выход', destroy_user_session_path, method: :delete, class: 'glyphicon glyphicon-log-out', data: {toggle: "tooltip", placement: "bottom"}, title: "Разрегистрироваться" %>
             </li>
           <% end %>
         </ul>
