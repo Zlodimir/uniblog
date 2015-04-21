@@ -74,5 +74,6 @@ Rails.application.routes.draw do
   resources :items, only: [] do
     resources :comments, only: [:create]
   end
+  resources :articles
 end
 
