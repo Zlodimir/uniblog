@@ -11,7 +11,7 @@
 #end
 
 unless User.exists?(email: "sslupinos@gmail.com")
-	User.create(email: "sslupinos@gmail.com", password: "123456789", firstname: "Сергей", lastname: "Лc", 
+	User.create(email: "sslupinos@gmail.com", password: "123456789", firstname: "Сергей", lastname: "Лc",
 		confirmed_at: DateTime.now, confirmation_token: "", confirmation_sent_at: DateTime.now, admin: true)
 end
 
