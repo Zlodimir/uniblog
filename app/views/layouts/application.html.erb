@@ -43,7 +43,7 @@
             <li>
               <%= link_to " Админка", admin_root_path, class: "glyphicon glyphicon-wrench", data: {toggle: "tooltip", placement: "bottom"}, title: "Административная часть для управления сайтом" %>
             </li>
-        <% end %>
+          <% end %>
           <% if user_signed_in? %>
             <li>
                 <%= link_to ' ' + current_user.email, user_path(current_user), class: "glyphicon glyphicon-user", data: {toggle: "tooltip", placement: "bottom"}, title: "Ваш профиль" %>
@@ -73,6 +73,9 @@
           </div>
         <% end %>
       	<%= yield %>
+        <br>
+        <br>
+        <br>
       </div>
       <div class="col-md-3">
       	<h3 class='text-center'>Новости</h3>
@@ -86,6 +89,18 @@
           </tbody>
         </table>
         <%= link_to "Все новости", items_path %>
+      </div>
+    </div>
+  </div>
+  <div class="navbar-inverse navbar-fixed-bottom">
+    <div class="container">
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a href='#'>test</a></li>
+        </ul>
+        <ul class="nav pull-right scroll-top">
+          <li><a href="#" title="Scroll to top"><i class="glyphicon glyphicon-chevron-up"></i></a></li>
+        </ul>
       </div>
     </div>
   </div>
