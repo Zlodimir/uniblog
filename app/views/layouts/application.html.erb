@@ -63,10 +63,10 @@
     <div class="row">
       <div class="col-md-2">
         <ul class="nav nav-pills nav-stacked">
-          <li class='<%= 'active' if current_page?('/') %>'><%= link_to 'Главная', root_path, class: 'list-group-item' %></li>
           <li class='<%= 'active' if params[:controller] == 'items' %>'><%= link_to 'Новости', items_path, class: 'list-group-item' %></li>
-          <li><a href="#" class="list-group-item">Menuebat<span class="badge">12</span></a></li>
-          <li><a href="#" class="list-group-item">Menukopat<span class="badge">12</span></a></li>
+          <% @pages.each do | page | %>
+            <li class='<%= 'active' if current_page?(page_path(page)) %>'><%= link_to page.name, page_path(page), class: 'list-group-item' %></li>
+          <% end %>
         </ul>
       </div>
       <div class="col-md-7">

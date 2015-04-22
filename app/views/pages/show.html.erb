@@ -1,0 +1,25 @@
+<% title(@page.name) %>
+<div class="page-header">
+	<h3><%= @page.name %></h3>
+</div>
+<p><%= @page.content.html_safe %></p>
+
+<blockquote>
+  <footer>
+    <cite>Создано: <%= @page.author %>, <%= time_ago_in_words(@page.created_at) %> назад</cite>
+  </footer>
+</blockquote>
+
+<header>
+  <h3>Комментарии</h3>
+</header>
+
+<div id='comments'>
+  <% if @page.comments.select(&:persisted?).any? %>
+    <%= render @page.comments.order('created_at').select(&:persisted?) %>
+  <% else %>
+    <p>Комментарии отсутствуют</p>
+  <% end %>
+</div>
+
+<%= render "comments/form", item: @page, comment: @comment %>

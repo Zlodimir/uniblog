@@ -15,7 +15,7 @@
 </header>
 <div id='comments'>
   <% if @item.comments.select(&:persisted?).any? %>
-    <%= render @item.comments.select(&:persisted?) %>
+    <%= render @item.comments.order('created_at').select(&:persisted?) %>
   <% else %>
     <p>Комментарии отсутствуют</p>
   <% end %>

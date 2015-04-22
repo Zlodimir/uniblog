@@ -16,5 +16,6 @@
 		<% end %>
 	</ul>
 </div>
+<p>Порядковый номер в меню: <strong><%= @page.sort %></strong></p>
 <p><%= @page.content.html_safe %></p>
 <p id='author'>Создано: <%= @page.author %>, <%= time_ago_in_words(@page.created_at) %> назад</p>

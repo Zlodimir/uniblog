@@ -2,7 +2,7 @@ class Admin::PagesController < Admin::BaseController
   before_action :set_page, only: [:show, :edit, :update, :destroy]
 
   def index
-  	@pages = Page.order('created_at desc').page params[:page]
+  	@pages = Page.order('sort').page params[:page]
   end
 
   def new
@@ -32,6 +32,7 @@ class Admin::PagesController < Admin::BaseController
   end
 
   def update
+    #byebug
   	if @page.update(page_param)
   	  flash[:notice] = 'Страница изменена'
   	  redirect_to admin_page_path(@page)
@@ -42,9 +43,9 @@ class Admin::PagesController < Admin::BaseController
   end
 
   def destroy
-  	@page.destroy
-	flash[:notice] = "Страница удалена"
-	redirect_to admin_pages_path
+    @page.destroy
+	  flash[:notice] = "Страница удалена"
+	  redirect_to admin_pages_path
   end
 
   private
@@ -53,6 +54,6 @@ class Admin::PagesController < Admin::BaseController
   end
 
   def page_param
-  	params.require(:page).permit(:name, :content, :bootsy_image_gallery_id)
+  	params.require(:page).permit(:name, :content, :bootsy_image_gallery_id, :sort)
   end
 end
