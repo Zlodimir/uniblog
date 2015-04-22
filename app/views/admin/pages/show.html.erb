@@ -1,0 +1,20 @@
+<% title(@page.name, "Страницы") %>
+<div class="page-header">
+	<h3><%= @page.name %></h3>
+
+	<ul class="actions">
+		<% admin_only do %>
+			<li><%= link_to "Редактировать", edit_admin_page_path(@page), class: "edit" %></li>
+			<li>
+				<%= link_to "Удалить",
+				admin_page_path(@page),
+				method: :delete,
+				data: {confirm: "Вы действительно хотите удалить страницу?"},
+				class: "delete"
+				%>
+			</li>
+		<% end %>
+	</ul>
+</div>
+<p><%= @page.content.html_safe %></p>
+<p id='author'>Создано: <%= @page.author %>, <%= time_ago_in_words(@page.created_at) %> назад</p>

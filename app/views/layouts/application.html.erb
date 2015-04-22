@@ -26,6 +26,9 @@
             <% if params[:controller] == 'admin/users' %>
               <li class='active'><%= link_to "Пользователи", admin_users_path %></li>
             <% end %>
+            <% if params[:controller] == 'admin/pages' %>
+              <li class='active'><%= link_to "Страницы", admin_pages_path %></li>
+            <% end %>
             <% if params[:controller] == 'admin/items' %>
               <li class='active'><%= link_to "Новости", admin_items_path %></li>
             <% end %>
@@ -92,13 +95,19 @@
       </div>
     </div>
   </div>
+  
+  <div class="panel panel-default", id='developer_panel'>
+    <div class="panel-heading">Develop info</div>
+    <div class="panel-body"></div>
+  </div>
+  <div id='developer_panel' style='border: 1px solid'>
+    ebat
+  </div>
   <div class="navbar-inverse navbar-fixed-bottom">
     <div class="container">
       <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav">
-          <li><a href='#'>test</a></li>
-        </ul>
-        <ul class="nav pull-right scroll-top">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a><i class="glyphicon glyphicon-th"></i></a></li>
           <li><a href="#" title="Scroll to top"><i class="glyphicon glyphicon-chevron-up"></i></a></li>
         </ul>
       </div>
