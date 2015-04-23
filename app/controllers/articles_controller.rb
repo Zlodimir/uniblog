@@ -10,6 +10,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
+    @attachments = @article.attachments
   end
 
   # GET /articles/new
@@ -42,6 +43,17 @@ class ArticlesController < ApplicationController
   def update
     respond_to do |format|
       if @article.update(article_params)
+
+        # save uploaded file
+        uploaded_io = params[:article][:attachment]
+        upload_filename = uploaded_io.original_filename
+        upload_file_path = Rails.root.join('uploads', upload_filename)
+        File.open(upload_file_path, 'wb') do |file|
+          @attachment = Attachment.new(article_id:@article.id, filename:upload_filename)
+          @attachment.save
+          file.write(uploaded_io.read)
+        end
+
         format.html { redirect_to @article, notice: 'Публикация обновлена.' }
         format.json { render :show, status: :ok, location: @article }
       else

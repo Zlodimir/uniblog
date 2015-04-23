@@ -3,7 +3,27 @@
 
   <div class="form-inputs">
     <%= f.input :title, label: 'Название' %>
+
     <%= f.input :text, label: 'Текст статьи' %>
+
+    <div class="form-group">
+      <%= f.label :text, 'Прикрепленный файл' %>
+      <div class="input-group">
+        <input id="uploadFile" class="form-control" placeholder="Choose File" readonly />
+        <span class="input-group-btn">
+          <div class="fileUpload btn btn-default">
+            <i class="glyphicon glyphicon-folder-open"></i>
+            <%= f.file_field :attachment, class:"upload", id:"uploadBtn" %>
+          </div>
+        </span>
+      </div>
+      <script>
+        document.getElementById("uploadBtn").onchange = function () {
+          document.getElementById("uploadFile").value = this.value.replace(/.+[\\\/]/, "");
+        };
+      </script>
+    </div>
+
   </div>
 
   <div class="form-actions">
