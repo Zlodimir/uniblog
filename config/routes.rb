@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   #get 'items/index'
 
@@ -8,6 +9,8 @@ Rails.application.routes.draw do
     root 'base#index'
     resources :users, only: [:index, :destroy]
     resources :items, only: [:show, :index, :new, :update, :destroy, :create, :edit]
+    resources :pages, only: [:show, :index, :new, :update, :destroy, :create, :edit]
+    resources :comments, only: [:destroy]
   end
 
   devise_for :users
@@ -70,10 +73,16 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update]
   resources :items, only: [:show, :index]
   resources :assets, only: [:show, :new], path: :files
+  resources :pages, only: [:show]
 
   resources :items, only: [] do
     resources :comments, only: [:create]
   end
+
+  resources :pages, only: [] do
+    resources :comments, only: [:create]
+  end
+  
   resources :articles
 end
 

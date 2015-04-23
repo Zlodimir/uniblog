@@ -71,7 +71,7 @@ a.delete {
 	}
 }
 
-#xfiles h2 {
+#admin h3 {
 	font-size: 16px;
 	font-weight: bold;
 	margin: 20px 0px 0px;
@@ -94,12 +94,27 @@ p#author {
 }
 
 .col-md-4 h2 {
-	font-size: 13px;
+	font-size: 50px;
 	letter-spacing: 1px;
 	text-transform: uppercase;
 	font-weight: bold;
 	color: #959595;
 	padding-left: 15px;
+}
+
+#developer_panel {
+    width: 300px;
+    position:absolute;
+    display:none;
+    bottom: 0;
+    right: 0px;
+    margin-right: 20px;
+    margin-bottom: 70px;
+}
+
+.comment_panel {
+	float:right;
+	margin-top: 15px;
 }
 
 .fileUpload input.upload {

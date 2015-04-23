@@ -11,6 +11,16 @@
 		<% end %>
 	</div>
 	<div class="col-md-10">
+	  <% admin_only do %>
+	  	<div class='comment_panel'>
+	  		<%= link_to "", admin_comment_path(comment),
+				method: :delete,
+				data: {confirm: "Вы действительно хотите удалить комментарий?"},
+				class: "glyphicon glyphicon-trash",
+				remote: true
+			%>
+	  	</div>
+	  <% end %>
 	  <blockquote class="comment">
 	    <p><%= simple_format(comment.text) %></p>
 	    <footer>

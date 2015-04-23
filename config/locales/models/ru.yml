@@ -3,6 +3,7 @@ ru:
     models:
       user: Пользователь
       item: Новость
+      page: Страница
     attributes:
       profile:
         lastname: Фамилия

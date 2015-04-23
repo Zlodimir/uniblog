@@ -29,4 +29,11 @@ RSpec.feature "Admin can create news" do
 		visit "/"
 		expect(page).to have_content('Сантехник Иванов сбрил бороду')
 	end
+
+	scenario 'verify page title' do
+		item = Item.find_by(title: 'Сантехник Иванов сбрил бороду')
+		expect(page.current_url).to eql(admin_item_url(item))
+		title = item.title + ' - ' + 'Новости - Блог'
+		expect(page).to have_title(title)
+	end
 end

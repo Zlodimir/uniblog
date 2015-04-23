@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= @title || "Uniblog" %></title>
+  <title>
+    <% if content_for?(:title) %>
+      <%= yield(:title) %>
+    <% else %>
+      Блог
+    <% end %>
+  </title>
   <%= stylesheet_link_tag    'application' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
@@ -20,6 +26,9 @@
             <% if params[:controller] == 'admin/users' %>
               <li class='active'><%= link_to "Пользователи", admin_users_path %></li>
             <% end %>
+            <% if params[:controller] == 'admin/pages' %>
+              <li class='active'><%= link_to "Страницы", admin_pages_path %></li>
+            <% end %>
             <% if params[:controller] == 'admin/items' %>
               <li class='active'><%= link_to "Новости", admin_items_path %></li>
             <% end %>
@@ -37,7 +46,7 @@
             <li>
               <%= link_to " Админка", admin_root_path, class: "glyphicon glyphicon-wrench", data: {toggle: "tooltip", placement: "bottom"}, title: "Административная часть для управления сайтом" %>
             </li>
-        <% end %>
+          <% end %>
           <% if user_signed_in? %>
             <li>
                 <%= link_to ' ' + current_user.email, user_path(current_user), class: "glyphicon glyphicon-user", data: {toggle: "tooltip", placement: "bottom"}, title: "Ваш профиль" %>
@@ -54,10 +63,10 @@
     <div class="row">
       <div class="col-md-2">
         <ul class="nav nav-pills nav-stacked">
-          <li class='<%= 'active' if current_page?('/') %>'><%= link_to 'Главная', root_path, class: 'list-group-item' %></li>
           <li class='<%= 'active' if params[:controller] == 'items' %>'><%= link_to 'Новости', items_path, class: 'list-group-item' %></li>
-          <li><a href="#" class="list-group-item">Menuebat<span class="badge">12</span></a></li>
-          <li><a href="#" class="list-group-item">Menukopat<span class="badge">12</span></a></li>
+          <% @pages.each do | page | %>
+            <li class='<%= 'active' if current_page?(page_path(page)) %>'><%= link_to page.name, page_path(page), class: 'list-group-item' %></li>
+          <% end %>
         </ul>
       </div>
       <div class="col-md-7">
@@ -67,6 +76,9 @@
           </div>
         <% end %>
       	<%= yield %>
+        <br>
+        <br>
+        <br>
       </div>
       <div class="col-md-3">
       	<h3 class='text-center'>Новости</h3>
@@ -80,6 +92,24 @@
           </tbody>
         </table>
         <%= link_to "Все новости", items_path %>
+      </div>
+    </div>
+  </div>
+  
+  <div class="panel panel-default", id='developer_panel'>
+    <div class="panel-heading">Develop info</div>
+    <div class="panel-body"></div>
+  </div>
+  <div id='developer_panel' style='border: 1px solid'>
+    ebat
+  </div>
+  <div class="navbar-inverse navbar-fixed-bottom">
+    <div class="container">
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a><i class="glyphicon glyphicon-th"></i></a></li>
+          <li><a href="#" title="Scroll to top"><i class="glyphicon glyphicon-chevron-up"></i></a></li>
+        </ul>
       </div>
     </div>
   </div>

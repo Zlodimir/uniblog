@@ -15,6 +15,7 @@
 //= require bootstrap-sprockets
 //= require bootsy
 //= require turbolinks
+//= require main
 //= require_tree .
 
 $(document).on("ready page:change", function() {
