@@ -15,7 +15,7 @@ unless User.exists?(email: "sslupinos@gmail.com")
 		confirmed_at: DateTime.now, confirmation_token: "", confirmation_sent_at: DateTime.now, admin: true)
 end
 
-#u = User.where(email: 'sslupinos@gmail.com').first
+u = User.where(email: 'sslupinos@gmail.com').first
 
 #100.times do |num|
 #	title = 'Title of the news № ' + num.to_s
@@ -24,6 +24,11 @@ end
 #	end
 #end
 
+if Page.exists?(primary: true)
+	p = Page.where(primary: true).first
+	p.destroy
+end
+
 unless Page.exists?(primary: :true)
-	Page.create(name: 'Главная', content: 'содержание главной страницы', sort: 1, primary: true);
+	Page.create(name: 'Главная', content: 'содержание главной страницы', sort: 1, primary: true, author_id: u.id);
 end
