@@ -13,7 +13,8 @@
 	<div class="col-md-10">
 	  <% admin_only do %>
 	  	<div class='comment_panel'>
-	  		<%= link_to "", admin_comment_path(comment),
+	  		<span class='glyphicon glyphicon-cog'></span>
+	  		<%= link_to " Удалить", admin_comment_path(comment),
 				method: :delete,
 				data: {confirm: "Вы действительно хотите удалить комментарий?"},
 				class: "glyphicon glyphicon-trash",
