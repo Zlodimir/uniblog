@@ -46,10 +46,11 @@ class ArticlesController < ApplicationController
 
         # save uploaded file
         uploaded_io = params[:article][:attachment]
-        upload_filename = uploaded_io.original_filename
+        upload_name = uploaded_io.original_filename
+        upload_filename = Digest::SHA1.hexdigest(Time.now.to_s + upload_name)
         upload_file_path = Rails.root.join('uploads', upload_filename)
         File.open(upload_file_path, 'wb') do |file|
-          @attachment = Attachment.new(article_id:@article.id, filename:upload_filename)
+          @attachment = Attachment.new(article_id: @article.id, name: upload_name, filename: upload_filename)
           @attachment.save
           file.write(uploaded_io.read)
         end
