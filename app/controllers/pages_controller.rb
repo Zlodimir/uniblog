@@ -4,6 +4,7 @@ class PagesController < ApplicationController
 	def index
 		if Page.where(primary: :true).count != 0
 			@main_page = Page.where(primary: :true).first
+			redirect_to page_path(@main_page)
 		else
 			if Page.count != 0
 				@main_page = Page.first
