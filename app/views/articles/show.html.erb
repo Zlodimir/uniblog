@@ -10,12 +10,14 @@
   <%= @article.text %>
 </p>
 
-<p>
-  <strong>Прикрепленные файлы:</strong>
-  <% @attachments.each do |attach| %>
-    <%= attach.filename %>
-  <% end %>
-</p>
+<% if @attachments.any? %>
+  <p>
+    <strong>Прикрепленные файлы:</strong>
+    <% @attachments.each do |attach| %>
+      <%= attach.filename %>
+    <% end %>
+  </p>
+<% end %>
 
 <%= link_to 'Редактировать', edit_article_path(@article) %> |
 <%= link_to 'Список публикаций', articles_path %>
