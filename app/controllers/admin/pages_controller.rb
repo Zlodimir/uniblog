@@ -54,6 +54,6 @@ class Admin::PagesController < Admin::BaseController
   end
 
   def page_param
-  	params.require(:page).permit(:name, :content, :bootsy_image_gallery_id, :sort, :primary)
+  	params.require(:page).permit(:name, :content, :bootsy_image_gallery_id, :sort)
   end
 end

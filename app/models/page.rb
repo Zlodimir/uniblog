@@ -8,8 +8,4 @@ class Page < ActiveRecord::Base
   validates :content, presence: true, length: {minimum: 2}
 
   paginates_per 15
-
-  def primary_value
-    primary ? 'Да' : 'Нет'
-  end
 end
