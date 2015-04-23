@@ -5,10 +5,13 @@ class PagesController < ApplicationController
 		if Page.where(primary: :true).count != 0
 			@main_page = Page.where(primary: :true).first
 		else
-			@main_page = Page.first
+			if Page.count != 0
+				@main_page = Page.first
+				redirect_to page_path(@main_page)
+			else
+				redirect_to root_path
+			end
 		end
-		redirect_to page_path(@main_page)
-		#@pages = Page.all
 	end
 
 	def show

@@ -15,11 +15,15 @@ unless User.exists?(email: "sslupinos@gmail.com")
 		confirmed_at: DateTime.now, confirmation_token: "", confirmation_sent_at: DateTime.now, admin: true)
 end
 
-u = User.where(email: 'sslupinos@gmail.com').first
+#u = User.where(email: 'sslupinos@gmail.com').first
 
-100.times do |num|
-	title = 'Title of the news № ' + num.to_s
-	if not Item.exists?(title: title)
-		Item.create(title: title, description: 'description of the news ' + num.to_s, author: u)
-	end
+#100.times do |num|
+#	title = 'Title of the news № ' + num.to_s
+#	if not Item.exists?(title: title)
+#		Item.create(title: title, description: 'description of the news ' + num.to_s, author: u)
+#	end
+#end
+
+unless Page.exists?(primary: :true)
+	Page.create(name: 'Главная', content: 'содержание главной страницы', sort: 1, primary: true);
 end
