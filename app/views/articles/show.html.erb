@@ -13,9 +13,24 @@
 <% if @attachments.any? %>
   <p>
     <strong>Прикрепленные файлы:</strong>
-    <% @attachments.each do |attach| %>
-      <%= attach.name %>
-    <% end %>
+
+    <table class="table table-hover">
+      <tbody>
+        <% @attachments.each do |attach| %>
+          <tr>
+            <td>
+              <%= link_to attach.name, "/attachment/"+attach.filename %>
+            </td>
+            <td>
+              <%#= link_to article, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-xs" do %>
+                  <i class="glyphicon glyphicon-trash"></i>
+              <%# end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
   </p>
 <% end %>
 

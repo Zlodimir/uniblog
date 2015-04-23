@@ -64,6 +64,21 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def get_file
+    filename = params[:id]
+    file_path = Rails.root.join('uploads', filename)
+    File.open(file_path, 'rb') do |file|
+      name = Attachment.find_by_filename(filename).name
+      response.header['Content-Type'] = 'application/octet-stream'
+      response.header['Content-Disposition'] = 'attachment; filename="' + name + '"'
+      while line = file.gets
+        response.stream.write line
+      end
+    end
+  ensure
+    response.stream.close
+  end
+
   # DELETE /articles/1
   # DELETE /articles/1.json
   def destroy
