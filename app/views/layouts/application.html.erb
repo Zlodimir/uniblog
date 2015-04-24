@@ -9,7 +9,7 @@
     <% end %>
   </title>
   <%= stylesheet_link_tag    'application' %>
-  <%= javascript_include_tag 'application' %>
+  
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -95,13 +95,7 @@
       </div>
     </div>
   </div>
-  <div class="panel panel-default", id='developer_panel'>
-    <div class="panel-heading">Develop info</div>
-    <div class="panel-body"></div>
-  </div>
-  <div id='developer_panel' style='border: 1px solid'>
-    ebat
-  </div>
+
   <div class="navbar-inverse navbar-fixed-bottom">
     <div class="container">
       <div class="collapse navbar-collapse" id="myNavbar">
@@ -112,5 +106,10 @@
       </div>
     </div>
   </div>
+  <div class="panel panel-default", id='developer_panel'>
+    <div class="panel-heading">Extra Data</div>
+    <div class="panel-body">Developed by <a href='http://datacrafts.io/'>datacrafts.io</a></div>
+  </div>
+  <%= javascript_include_tag 'application' %>
 </body>
 </html>

@@ -1,5 +1,6 @@
 @import "items";
 @import "admin/items";
+@import "comments";
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "bootsy";
@@ -18,6 +19,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require jquery-ui
  */
 .page-header {
 	position: relative;
@@ -104,17 +106,31 @@ p#author {
 
 #developer_panel {
     width: 300px;
-    position:absolute;
-    display:none;
-    bottom: 0;
-    right: 0px;
-    margin-right: 20px;
-    margin-bottom: 70px;
+    position: fixed;
+    display: none;
+    bottom: 50px;
+    right: 10px;
 }
 
 .comment_panel {
 	float:right;
+	position: relative;
 	margin-top: 15px;
+	//border: 1px solid;
+	//height: 70px;
+	//background-color: #C8E6DE;
+	//border-radius: 7px;
+}
+
+.glyphicon-trash {
+	display: none;
+	margin-top: 19;
+	margin-left: 12px;
+	color: #5a5555;
+	font-family: "FontAwesome";
+	&:before {
+		@extend .fa-trash;
+	}
 }
 
 .fileUpload input.upload {
