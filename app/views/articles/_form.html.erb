@@ -6,8 +6,33 @@
 
     <%= f.input :text, label: 'Текст статьи' %>
 
+    <% if @attachments.any? %>
+      <p>
+        <strong>Прикрепленные файлы:</strong>
+        <table class="table table-hover">
+          <tbody>
+            <% @attachments.each do |a| %>
+              <tr>
+                <td style="width: 100%">
+                  <%= link_to a.attributes['attach'], "/attachment/#{a.attributes['id']}" %>
+                </td>
+                <td>
+                  <label class="btn-toggle">
+                    <%= check_box 'delete_attachments', a.attributes['id'] %>
+                    <span class="btn btn-default btn-xs">
+                      <i class="glyphicon glyphicon-trash"></i>
+                    </span>
+                  </label>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </p>
+    <% end %>
+
     <div class="form-group">
-      <%= f.label :text, 'Прикрепленный файл' %>
+      <%= f.label :text, 'Прикрепить файл(ы)' %>
       <div class="input-group">
         <input id="uploadFile" class="form-control" placeholder="Choose File" readonly />
         <span class="input-group-btn">

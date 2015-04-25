@@ -1,0 +1,18 @@
+.btn-toggle {
+
+  input[type="checkbox"] {
+    display: none;
+  }
+
+  input[type="checkbox"] + span {
+    //  color: black;
+  }
+
+  input[type="checkbox"]:checked + span {
+    @extend .active;
+
+    i {
+      color: red;
+    }
+  }
+}

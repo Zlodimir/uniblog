@@ -20,6 +20,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
+    @attachments = @article.attachments
   end
 
   # POST /articles
@@ -29,6 +30,12 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
+
+        # save uploaded file
+        params[:article][:attachments]['attach'].each do |a|
+          @attachment = @article.attachments.create!(:attach => a, :article_id => @article.id)
+        end
+
         format.html { redirect_to @article, notice: 'Новая публикация успешно создана.' }
         format.json { render :show, status: :created, location: @article }
       else
@@ -44,9 +51,20 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       if @article.update(article_params)
 
-        # save uploaded file
-        params[:article][:attachments]['attach'].each do |a|
-          @attachment = @article.attachments.create!(:attach => a, :article_id => @article.id)
+        # save uploaded files
+        if params[:article][:attachments]
+          params[:article][:attachments]['attach'].each do |a|
+            @attachment = @article.attachments.create!(:attach => a, :article_id => @article.id)
+          end
+        end
+
+        # delete attached files
+        if params[:delete_attachments]
+          params[:delete_attachments].each do |id, delete|
+            if delete=='1'
+              @article.attachments.find(id).delete
+            end
+          end
         end
 
         format.html { redirect_to @article, notice: 'Публикация обновлена.' }
@@ -58,7 +76,7 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def get_file
+  def get_attachment
     attachment = Attachment.find(params[:id])
     filename = attachment.attach.to_s
     send_file 'public' + filename
