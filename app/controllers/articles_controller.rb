@@ -45,14 +45,8 @@ class ArticlesController < ApplicationController
       if @article.update(article_params)
 
         # save uploaded file
-        uploaded_io = params[:article][:attachment]
-        upload_name = uploaded_io.original_filename
-        upload_filename = Digest::SHA1.hexdigest(Time.now.to_s + upload_name)
-        upload_file_path = Rails.root.join('uploads', upload_filename)
-        File.open(upload_file_path, 'wb') do |file|
-          @attachment = Attachment.new(article_id: @article.id, name: upload_name, filename: upload_filename)
-          @attachment.save
-          file.write(uploaded_io.read)
+        params[:article][:attachments]['attach'].each do |a|
+          @attachment = @article.attachments.create!(:attach => a, :article_id => @article.id)
         end
 
         format.html { redirect_to @article, notice: 'Публикация обновлена.' }
@@ -65,18 +59,9 @@ class ArticlesController < ApplicationController
   end
 
   def get_file
-    filename = params[:id]
-    file_path = Rails.root.join('uploads', filename)
-    File.open(file_path, 'rb') do |file|
-      name = Attachment.find_by_filename(filename).name
-      response.header['Content-Type'] = 'application/octet-stream'
-      response.header['Content-Disposition'] = 'attachment; filename="' + name + '"'
-      while line = file.gets
-        response.stream.write line
-      end
-    end
-  ensure
-    response.stream.close
+    attachment = Attachment.find(params[:id])
+    filename = attachment.attach.to_s
+    send_file 'public' + filename
   end
 
   # DELETE /articles/1

@@ -13,7 +13,9 @@
         <span class="input-group-btn">
           <div class="fileUpload btn btn-default">
             <i class="glyphicon glyphicon-folder-open"></i>
-            <%= f.file_field :attachment, class:"upload", id:"uploadBtn" %>
+            <%= f.fields_for :attachments do |p| %>
+              <%= p.file_field :attach, multiple: true, class:"upload", id:"uploadBtn" %>
+            <% end %>
           </div>
         </span>
       </div>
