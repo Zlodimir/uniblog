@@ -62,7 +62,7 @@ class ArticlesController < ApplicationController
         if params[:delete_attachments]
           params[:delete_attachments].each do |id, delete|
             if delete=='1'
-              @article.attachments.find(id).delete
+              @article.attachments.find(id).destroy!
             end
           end
         end
