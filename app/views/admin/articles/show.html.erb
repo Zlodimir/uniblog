@@ -17,4 +17,4 @@
   </ul>
 </div>
 <p><%= @article.text.html_safe %></p>
-<p id='author'>Создано: <%#= @article.author %>, <%#= time_ago_in_words(@article.created_at) %> назад</p>
+<p id='author'>Создано: <%= @article.author %>, <%= time_ago_in_words(@article.created_at) %> назад</p>

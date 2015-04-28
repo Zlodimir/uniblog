@@ -25,3 +25,9 @@
 
   </p>
 <% end %>
+
+<blockquote>
+  <footer>
+    <cite>Создано: <%= @article.author %>, <%= time_ago_in_words(@article.created_at) %> назад</cite>
+  </footer>
+</blockquote>
