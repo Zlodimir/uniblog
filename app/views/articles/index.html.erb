@@ -24,4 +24,6 @@
 
 <br>
 
-<%= link_to 'Создать новую статью', new_article_path %>
+<% admin_only do %>
+    <%= link_to 'Создать новую статью', new_article_path %>
+<% end %>

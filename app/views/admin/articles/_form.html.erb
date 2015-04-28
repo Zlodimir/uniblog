@@ -1,0 +1,5 @@
+<%= simple_form_for([:admin, @article], :html=> { class: 'longf' }) do |f| %>
+    <%= f.input :title, label: 'Название' %>
+    <%= f.input :text, as: :bootsy, label: 'Содержание', :input_html => {:rows => 15} %>
+    <%= f.button :submit, class: "btn-primary" %>
+<% end %>

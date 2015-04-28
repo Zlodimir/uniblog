@@ -32,6 +32,9 @@
             <% if params[:controller] == 'admin/items' %>
               <li class='active'><%= link_to "Новости", admin_items_path %></li>
             <% end %>
+            <% if params[:controller] == 'admin/articles' %>
+              <li class='active'><%= link_to "Статьи", admin_articles_path %></li>
+            <% end %>
           <% end %>
           <% if params[:controller] == 'items' %>
             <li class='active'><%= link_to "Новости", items_path %></li>
@@ -67,6 +70,7 @@
           <% @pages.each do | page | %>
             <li class='<%= 'active' if current_page?(page_path(page)) %>'><%= link_to page.name, page_path(page), class: 'list-group-item' %></li>
           <% end %>
+          <li><%= link_to 'Статьи', articles_path, class: 'list-group-item' %></li>
         </ul>
       </div>
       <div class="col-md-7">
