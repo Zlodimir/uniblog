@@ -23,10 +23,10 @@
         <td><%= article.id %></td>
         <td><%= link_to article.title, admin_article_path(article) %></td>
         <td>
-          <%#= item.author.firstname + ' ' + item.author.lastname + ' ' + item.author.email %>
-          <%# if item.author.admin? %>
+          <%= article.author.firstname + ' ' + article.author.lastname + ' ' + article.author.email %>
+          <% if article.author.admin? %>
               <span class="label label-success">Admin</span>
-          <%# end %>
+          <% end %>
         </td>
         <td style="width: 1px;">
           <%= link_to edit_admin_article_path(article), class: "btn btn-default btn-xs" do %>

@@ -19,7 +19,7 @@
         <td><%= localize(article.created_at, :format => :only_date) %></td>
         <td><%= link_to article.title, article %></td>
         <td>
-          <%#= item.author.firstname + ' ' + item.author.lastname + ' ' + item.author.email %>
+          <%= article.author.firstname + ' ' + article.author.lastname + ' ' + article.author.email %>
         </td>
       </tr>
     <% end %>

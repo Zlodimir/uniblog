@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :items
   has_many :pages
+  has_many :articles
   #has_many :comments, dependent: :destroy
 
   mount_uploader :avatar, AvatarUploader

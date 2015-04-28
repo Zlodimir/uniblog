@@ -20,7 +20,7 @@ class Admin::ArticlesController < Admin::BaseController
   def create
     @article = Article.new
     @article.attributes = article_param
-    #@page.author = current_user
+    @article.author = current_user
 
     if @article.save
       flash[:notice] = 'Статья создана'
