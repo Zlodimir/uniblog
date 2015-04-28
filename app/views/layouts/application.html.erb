@@ -39,6 +39,9 @@
           <% if params[:controller] == 'items' %>
             <li class='active'><%= link_to "Новости", items_path %></li>
           <% end %>
+          <% if params[:controller] == 'articles' %>
+              <li class='active'><%= link_to "Статьи", admin_articles_path %></li>
+          <% end %>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <% unless user_signed_in? %>
