@@ -1,14 +1,11 @@
+<% title(@article.title, "Статьи") %>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Название:</strong>
-  <%= @article.title %>
-</p>
+<div class="page-header">
+  <h3><%= @article.title %></h3>
+</div>
+<p><%= @article.text.html_safe %></p>
 
-<p>
-  <strong>Текст:</strong>
-  <%= @article.text %>
-</p>
 
 <% if @attachments.any? %>
   <p>
@@ -28,6 +25,3 @@
 
   </p>
 <% end %>
-
-<%= link_to 'Редактировать', edit_article_path(@article) %> |
-<%= link_to 'Список публикаций', articles_path %>
