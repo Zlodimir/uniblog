@@ -9,18 +9,25 @@
     <% end %>
   </title>
   <%= stylesheet_link_tag    'application' %>
-  
+
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header id='head'>
+    <%= image_tag 'header.png' %>
+  </header>
   <nav class="navbar navbar-inverse"> <!-- navbar-fixed-top -->
+    <ul class="nav navbar-nav navbar-lelft">
+      <li><a href="#"><i class="glyphicon glyphicon-chevron-down" id='head_panel_down' data-toggle="tooltip" data-placement="bottom" title="Показать панель"></i></a></li>
+      <li><a href="#"><i class="glyphicon glyphicon-chevron-up" id='head_panel_up' data-toggle="tooltip" data-placement="bottom" title="Скрыть панель"></i></a></li>
+    </ul>
     <div class="container">
       <div class="navbar-header">
         <%= link_to 'Докторова Т.С.', root_path, class: "navbar-brand" %>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li class="<%= "active" if current_page?("/") %>"><%= link_to "/", root_path, data: {toggle: "tooltip", placement: "bottom"}, title: "Первоначальная страница сайта" %></li>
+          <li class="<%= "active" if current_page?(page_path(@main_page)) %>"><%= link_to "/", root_path, data: {toggle: "tooltip", placement: "bottom"}, title: "Первоначальная страница сайта" %></li>
           <% if controller.class.name.split("::").first == 'Admin' %>
             <li class='<%= 'active' if params[:controller] == 'admin/base' %>'><%= link_to "Админка", admin_root_path %></li>
             <% if params[:controller] == 'admin/users' %>
@@ -35,6 +42,9 @@
           <% end %>
           <% if params[:controller] == 'items' %>
             <li class='active'><%= link_to "Новости", items_path %></li>
+          <% end %>
+          <% if params[:controller] == 'pages' %>
+            <li class='active'><%= link_to @page.name, page_path(@page) %></li>
           <% end %>
         </ul>
         <ul class="nav navbar-nav navbar-right">
@@ -65,7 +75,7 @@
         <ul class="nav nav-pills nav-stacked">
           <li class='<%= 'active' if params[:controller] == 'items' %>'><%= link_to 'Новости', items_path, class: 'list-group-item' %></li>
           <% @pages.each do | page | %>
-            <li class='<%= 'active' if current_page?(page_path(page)) %>'><%= link_to page.name, page_path(page), class: 'list-group-item' %></li>
+            <li class='<%= 'active' if current_page?(page_path(page)) || (@main_page == page && current_page?(root_path))  %>'><%= link_to page.name, page_path(page), class: 'list-group-item' %></li>
           <% end %>
         </ul>
       </div>

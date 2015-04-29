@@ -14,13 +14,20 @@ class CommentsController < ApplicationController
           redirect_to page_path(@source)
         end
       else
-        flash.now[:alert] = 'Комментарий не создан'
+        flash[:alert] = 'Комментарий не создан'
         if !params[:item_id].nil?
-          render 'items/show'
+          redirect_to item_path(@source)
         elsif !params[:page_id].nil?
-          render 'pages/show'
+          redirect_to page_path(@source)
         end
       end
+    else
+      if !params[:item_id].nil?
+        redirect_to item_path(@source)
+      elsif !params[:page_id].nil?
+        redirect_to page_path(@source)
+      end
+      flash[:alert] = 'Комментарий не создан'
     end
   end
 
