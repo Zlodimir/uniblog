@@ -14,7 +14,7 @@ class Admin::ArticlesController < Admin::BaseController
   end
 
   def edit
-
+    @attachments = @article.attachments
   end
 
   def create
@@ -34,6 +34,23 @@ class Admin::ArticlesController < Admin::BaseController
   def update
     #byebug
     if @article.update(article_param)
+
+      # save uploaded files
+      if params[:article][:attachments]
+        params[:article][:attachments]['attach'].each do |a|
+          @attachment = @article.attachments.create!(:attach => a, :article_id => @article.id)
+        end
+      end
+
+      # delete attached files
+      if params[:delete_attachments]
+        params[:delete_attachments].each do |id, delete|
+          if delete=='1'
+            @article.attachments.find(id).destroy!
+          end
+        end
+      end
+
       flash[:notice] = 'Статья изменена'
       redirect_to admin_article_path(@article)
     else

@@ -1,5 +1,111 @@
 <%= simple_form_for([:admin, @article], :html=> { class: 'longf' }) do |f| %>
     <%= f.input :title, label: 'Название' %>
     <%= f.input :text, as: :bootsy, label: 'Содержание', :input_html => {:rows => 15} %>
+
+    <%= f.fields_for :attachments do |p| %>
+
+      <div id="button">
+        <span class="input-group">
+          <div class="fileUpload btn btn-success">
+            <i class="glyphicon glyphicon-folder-open"></i>
+            &nbsp;Добавить файл
+            <%= p.file_field :attach, multiple: true, class:"upload" %>
+          </div>
+        </span>
+      </div>
+      <br>
+
+      <table class="table table-striped">
+        <tbody id="files">
+
+          <% @attachments.each do |a| %>
+            <tr>
+              <td>
+                <%= link_to a.attributes['attach'], "/attachment/#{a.attributes['id']}" %>
+              </td>
+              <td>
+                <%= number_to_human_size(a.size) %>
+              </td>
+              <td>
+                <%= check_box 'delete_attachments', a.attributes['id'], :class => "hidden" %>
+                <div class="btn btn-danger" onclick="removeBtnHandler(this);">
+                  <i class="glyphicon glyphicon-trash"></i>
+                  &nbsp;Удалить
+                </div>
+              </td>
+            </tr>
+          <% end %>
+
+        </tbody>
+      </table>
+
+    <% end %>
+
+      <br>
+
+
+      <script>
+          // Возвращает размер файла в удобочитаемом формате
+          function humanFileSize(size) {
+              var i = Math.floor( Math.log(size) / Math.log(1024) );
+              return ( size / Math.pow(1024, i) ).toFixed(2) * 1 + ' ' + ['B', 'kB', 'MB', 'GB', 'TB'][i];
+          }
+
+          // Добавляет запись в таблицу с файлами
+          addTableRow = function (input) {
+              var files = $('#files');
+              var fileinfo = $(input)[0].files[0];
+              files.append('<tr>' +
+                            '<td>'+fileinfo.name+'</td>' +
+                            '<td>'+humanFileSize(fileinfo.size)+'</td>' +
+                            '<td><div class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i>&nbsp;Удалить</div></td>' +
+                            '<td></td>' +
+                            '</tr>');
+              files.find('tr:last-child .btn-danger').on('click', deleteBtnHandler);
+              input.attr('name', 'article[attachments][attach][]');
+              files.find('tr:last-child td:last-child').hide().append(input);
+          };
+
+          // Добавляет кнопку для выбора нового файла
+          addAttachBtn = function () {
+              $('<input/>').attr('type', 'file').addClass('upload').on('change', selectFileHandler).appendTo('#button div');
+          };
+
+          // Обработчик вызыватеся при нажатии на кнопку удаления выбранного файла
+          // удаляет только локальную запись - после отправки данных формы файл
+          // не будет залит
+          deleteBtnHandler = function () {
+            //if ( confirm('Удалить файл?') )
+            {
+              $(this).parent().parent().remove();
+            }
+          };
+
+          // Обработчик вызывается при нажатии на кнопку удаления выбранного файла
+          // помечает файл на удаление - после отправки данных флормы файл
+          // будет удален с сервера
+          removeBtnHandler = function (elem) {
+              // отмечаем файл на удаление с сервера
+              $(elem).parent().find('input[type=checkbox]').prop('checked', true);
+
+              // скрываем запись таблицы
+              $(elem).parent().parent().hide();
+          };
+
+          // Обработчик события выбора файла
+          selectFileHandler = function () {
+              // переносим input в таблицу
+              var input = $(this);
+              addTableRow(input);
+
+              // создаем новый input для кнопки 'Добавить файл'
+              addAttachBtn();
+          };
+
+          $('.upload').on('change', selectFileHandler);
+
+      </script>
+
+
     <%= f.button :submit, class: "btn-primary" %>
 <% end %>

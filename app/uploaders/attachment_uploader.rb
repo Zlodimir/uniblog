@@ -2,6 +2,8 @@
 
 class AttachmentUploader < CarrierWave::Uploader::Base
 
+  process :store_file_attributes
+
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
@@ -47,5 +49,13 @@ class AttachmentUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+
+  private
+
+  def store_file_attributes
+    if file && model
+      model.size  = File.size(file.file)
+    end
+  end
 
 end
