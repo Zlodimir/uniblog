@@ -25,6 +25,7 @@ module Uniblog
     config.active_record.raise_in_transactional_callbacks = true
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
 
-    
+    # For non-ascii letters attach file name
+    CarrierWave::SanitizedFile.sanitize_regexp = /[^[:word:]\.\-\+]/
   end
 end
