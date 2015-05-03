@@ -79,7 +79,7 @@ class ArticlesController < ApplicationController
   def get_attachment
     attachment = Attachment.find(params[:id])
     filename = attachment.attach.to_s
-    send_file 'public' + filename
+    send_file 'public' + URI.unescape(filename)
   end
 
   # DELETE /articles/1
