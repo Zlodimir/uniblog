@@ -12,9 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
+//= require jquery.cookie
 //= require bootstrap-sprockets
 //= require bootsy
-//= require turbolinks
 //= require main
 //= require_tree .
 

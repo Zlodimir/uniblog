@@ -69,7 +69,7 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  root "pages#index"
+  root "pages#show"
 
   resources :users, only: [:show, :edit, :update]
   resources :items, only: [:show, :index]

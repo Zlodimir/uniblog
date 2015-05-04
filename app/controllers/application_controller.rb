@@ -20,5 +20,10 @@ protected
 
   def set_pages
     @pages = Page.order('sort').all
+    if Page.where(primary: :true).count != 0
+      @main_page = Page.where(primary: :true).first
+    else
+      @main_page = Page.first
+    end
   end
 end
