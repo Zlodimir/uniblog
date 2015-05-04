@@ -67,10 +67,12 @@ class Admin::ArticlesController < Admin::BaseController
 
   private
   def set_article
+    # Use callbacks to share common setup or constraints between actions.
     @article = Article.find(params[:id])
   end
 
   def article_param
+    # Never trust parameters from the scary internet, only allow the white list through.
     params.require(:article).permit(:title, :text, :bootsy_image_gallery_id)
   end
 end
