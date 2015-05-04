@@ -84,7 +84,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
   end
   
-  resources :articles
+  resources :articles, only: [:show, :index]
   match 'attachment/:id', to: 'articles#get_attachment', via: 'get'
 end
 
