@@ -1,8 +1,8 @@
-<% title("Статьи") %>
+<% title('Статьи') %>
 <div class='page-header'>
   <h3>Статьи</h3>
   <ul class="actions">
-    <li><%= link_to "Создать", new_admin_article_path, class: "new" %></li>
+    <li><%= link_to 'Создать', new_admin_article_path, class: 'new' %></li>
   </ul>
 </div>
 
@@ -29,12 +29,12 @@
           <% end %>
         </td>
         <td style="width: 1px;">
-          <%= link_to edit_admin_article_path(article), class: "btn btn-default btn-xs" do %>
+          <%= link_to edit_admin_article_path(article), class: 'btn btn-default btn-xs' do %>
               <i class="glyphicon glyphicon-pencil"></i>
           <% end %>
         </td>
         <td style="width: 1px;">
-          <%= link_to admin_article_path(article), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-xs" do %>
+          <%= link_to admin_article_path(article), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-xs' do %>
               <i class="glyphicon glyphicon-trash"></i>
           <% end %>
         </td>

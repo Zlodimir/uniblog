@@ -1,18 +1,11 @@
-.btn-toggle {
-
-  input[type="checkbox"] {
-    display: none;
-  }
-
-  input[type="checkbox"] + span {
-    //  color: black;
-  }
-
-  input[type="checkbox"]:checked + span {
-    @extend .active;
-
-    i {
-      color: red;
-    }
-  }
+.file-upload .upload {
+  cursor: pointer;
+  filter: alpha(opacity=0);
+  font-size: 20px;
+  margin: 0;
+  opacity: 0;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
 }

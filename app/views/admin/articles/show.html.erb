@@ -1,16 +1,16 @@
-<% title(@article.title, "Статьи") %>
+<% title(@article.title, 'Статьи') %>
 <div class="page-header">
   <h3><%= @article.title %></h3>
 
   <ul class="actions">
     <% admin_only do %>
-        <li><%= link_to "Редактировать", edit_admin_article_path(@article), class: "edit" %></li>
+        <li><%= link_to 'Редактировать', edit_admin_article_path(@article), class: 'edit' %></li>
         <li>
-          <%= link_to "Удалить",
+          <%= link_to 'Удалить',
                       admin_article_path(@article),
                       method: :delete,
-                      data: {confirm: "Вы действительно хотите удалить статью?"},
-                      class: "delete"
+                      data: {confirm: 'Вы действительно хотите удалить статью?'},
+                      class: 'delete'
           %>
         </li>
     <% end %>
@@ -19,12 +19,11 @@
 <p><%= @article.text.html_safe %></p>
 
 <% if @attachments.any? %>
-    <p>
-      <strong>Прикрепленные файлы:</strong>
+    <strong>Прикрепленные файлы:</strong>
 
     <table class="table table-hover">
       <tbody>
-      <% @attachments.each do |a| %>
+        <% @attachments.each do |a| %>
           <tr>
             <td>
               <%= link_to a.attributes['attach'], "/attachment/#{a.attributes['id']}" %>
@@ -33,11 +32,10 @@
               <%= number_to_human_size(a.size) %>
             </td>
           </tr>
-      <% end %>
+        <% end %>
       </tbody>
     </table>
 
-    </p>
 <% end %>
 
 <blockquote>
