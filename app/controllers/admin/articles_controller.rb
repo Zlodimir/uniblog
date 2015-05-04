@@ -10,7 +10,7 @@ class Admin::ArticlesController < Admin::BaseController
   end
 
   def show
-
+    @attachments = @article.attachments
   end
 
   def edit

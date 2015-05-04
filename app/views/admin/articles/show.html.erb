@@ -17,4 +17,28 @@
   </ul>
 </div>
 <p><%= @article.text.html_safe %></p>
-<p id='author'>Создано: <%= @article.author %>, <%= time_ago_in_words(@article.created_at) %> назад</p>
+
+<% if @attachments.any? %>
+    <p>
+      <strong>Прикрепленные файлы:</strong>
+
+    <table class="table table-hover">
+      <tbody>
+      <% @attachments.each do |a| %>
+          <tr>
+            <td>
+              <%= link_to a.attributes['attach'], "/attachment/#{a.attributes['id']}" %>
+            </td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+    </p>
+<% end %>
+
+<blockquote>
+  <footer>
+    <cite>Создано: <%= @article.author %>, <%= time_ago_in_words(@article.created_at) %> назад</cite>
+  </footer>
+</blockquote>
