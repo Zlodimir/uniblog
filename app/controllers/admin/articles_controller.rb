@@ -61,7 +61,7 @@ class Admin::ArticlesController < Admin::BaseController
 
   def destroy
     @article.destroy
-    flash[:notice] = "Статья удалена"
+    flash[:notice] = 'Статья удалена'
     redirect_to admin_articles_path
   end
 

@@ -33,17 +33,17 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem "bootstrap-sass", "~> 3.3"
+gem 'bootstrap-sass', '~> 3.3'
 
-gem "font-awesome-rails", "~> 4.2"
+gem 'font-awesome-rails', '~> 4.2'
 
-gem "simple_form", "3.1.0"
+gem 'simple_form', '3.1.0'
 
-gem "devise", "~>3.4.1"
+gem 'devise', '~>3.4.1'
 
 gem 'kaminari'
 
-gem "carrierwave", "~> 0.10.0"
+gem 'carrierwave', '~> 0.10.0'
 
 gem 'aws-s3', '~> 0.6.3'
 
@@ -65,13 +65,13 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 
-  gem "rspec-rails", "~> 3.1.0"
+  gem 'rspec-rails', '~> 3.1.0'
 end
 
 group :test do
-	gem "capybara", "~> 2.4"
-	gem "factory_girl_rails", "~> 4.5"
-  gem "selenium-webdriver", "~> 2.45.0"
-  gem "email_spec", "~> 1.6.0"
-  gem "database_cleaner", "~> 1.4.0"
+	gem 'capybara', '~> 2.4'
+	gem 'factory_girl_rails', '~> 4.5'
+  gem 'selenium-webdriver', '~> 2.45.0'
+  gem 'email_spec', '~> 1.6.0'
+  gem 'database_cleaner', '~> 1.4.0'
 end

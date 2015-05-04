@@ -2,22 +2,22 @@
 	<div class="col-md-2">
 		<% if comment.author.avatar.blank? %>
 			<% if Rails.env.production? %>
-		    	<%= image_tag AWS::S3::S3Object.url_for('no_photo.jpg', 'doctorova', :authenticated => true), :size => "120"  %>
+		    	<%= image_tag AWS::S3::S3Object.url_for('no_photo.jpg', 'doctorova', :authenticated => true), :size => '120' %>
 		  	<% else %>
-		    	<%= image_tag 'no_photo.jpg',  :size => "120" %>
+		    	<%= image_tag 'no_photo.jpg',  :size => '120' %>
 		  	<% end %>
 		<% else %>
-		  <%= image_tag comment.author.avatar_url.to_s,  :size => "120" %>
+		  <%= image_tag comment.author.avatar_url.to_s,  :size => '120' %>
 		<% end %>
 	</div>
 	<div class="col-md-10">
 	  <% admin_only do %>
-	  	<div class='comment_panel'>
+	  	<div class='comment-panel'>
 	  		<span class='glyphicon glyphicon-cog'></span>
-	  		<%= link_to " Удалить", admin_comment_path(comment),
+	  		<%= link_to ' Удалить', admin_comment_path(comment),
 				method: :delete,
-				data: {confirm: "Вы действительно хотите удалить комментарий?"},
-				class: "glyphicon glyphicon-trash",
+				data: {confirm: 'Вы действительно хотите удалить комментарий?'},
+				class: 'glyphicon glyphicon-trash',
 				remote: true
 			%>
 	  	</div>

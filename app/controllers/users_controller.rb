@@ -19,11 +19,11 @@ class UsersController < ApplicationController
     #byebug
     if @user.save(user_params)
       # Cool, you're done!
-      flash[:notice] = "Пользователь изменен"
+      flash[:notice] = 'Пользователь изменен'
       redirect_to user_path(@user)
     else
-      flash.now[:alert] = "Пользователь не изменен"
-      render "edit"
+      flash.now[:alert] = 'Пользователь не изменен'
+      render 'edit'
     end
   end
 
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   def check_current_user
   	if current_user.try(:admin?) == false || current_user.try(:admin?).nil?
   		if @user != current_user
-  			flash[:alert] = "Ошибка!"
+  			flash[:alert] = 'Ошибка!'
   			redirect_to root_path
   		end
   	end
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find(params[:id])
 	  rescue ActiveRecord::RecordNotFound
-	  flash[:alert] = "Пользователь не найден"
+	  flash[:alert] = 'Пользователь не найден'
 	  redirect_to root_path
   end
 end

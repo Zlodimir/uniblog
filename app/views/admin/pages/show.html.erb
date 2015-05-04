@@ -1,16 +1,16 @@
-<% title(@page.name, "Страницы") %>
+<% title(@page.name, 'Страницы') %>
 <div class="page-header">
 	<h3><%= @page.name %></h3>
 
 	<ul class="actions">
 		<% admin_only do %>
-			<li><%= link_to "Редактировать", edit_admin_page_path(@page), class: "edit" %></li>
+			<li><%= link_to 'Редактировать', edit_admin_page_path(@page), class: 'edit' %></li>
 			<li>
-				<%= link_to "Удалить",
+				<%= link_to 'Удалить',
 				admin_page_path(@page),
 				method: :delete,
-				data: {confirm: "Вы действительно хотите удалить страницу?"},
-				class: "delete"
+				data: {confirm: 'Вы действительно хотите удалить страницу?'},
+				class: 'delete'
 				%>
 			</li>
 		<% end %>

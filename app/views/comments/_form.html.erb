@@ -8,8 +8,8 @@
     <%= f.input :text, label: 'Комментарий', :disabled => true, placeholder: 'Вам необходимо зарегистрироваться или войти на сайт для того, чтобы оставлять комментарии' %>
   <% end %>
   <% if user_signed_in? %>
-    <%= f.submit 'Прокомментировать', class: "btn btn-primary" %>
+    <%= f.submit 'Прокомментировать', class: 'btn btn-primary' %>
   <% else %>
-    <%= f.submit 'Прокомментировать', class: "btn btn-primary disabled" %>
+    <%= f.submit 'Прокомментировать', class: 'btn btn-primary disabled' %>
   <% end %>
 <% end %>

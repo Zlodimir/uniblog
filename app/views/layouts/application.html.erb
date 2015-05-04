@@ -18,36 +18,36 @@
   </header>
   <nav class="navbar navbar-inverse"> <!-- navbar-fixed-top -->
     <ul class="nav navbar-nav navbar-lelft">
-      <li><a href="#"><i class="glyphicon glyphicon-chevron-down" id='head_panel_down' data-toggle="tooltip" data-placement="bottom" title="Показать панель"></i></a></li>
-      <li><a href="#"><i class="glyphicon glyphicon-chevron-up" id='head_panel_up' data-toggle="tooltip" data-placement="bottom" title="Скрыть панель"></i></a></li>
+      <li><a href="#"><i class="glyphicon glyphicon-chevron-down" id='head-panel-down' data-toggle="tooltip" data-placement="bottom" title="Показать панель"></i></a></li>
+      <li><a href="#"><i class="glyphicon glyphicon-chevron-up" id='head-panel-up' data-toggle="tooltip" data-placement="bottom" title="Скрыть панель"></i></a></li>
     </ul>
     <div class="container">
       <div class="navbar-header">
-        <%= link_to 'Докторова Т.С.', root_path, class: "navbar-brand" %>
+        <%= link_to 'Докторова Т.С.', root_path, class: 'navbar-brand' %>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li class="<%= "active" if current_page?(page_path(@main_page)) %>"><%= link_to "/", root_path, data: {toggle: "tooltip", placement: "bottom"}, title: "Первоначальная страница сайта" %></li>
-          <% if controller.class.name.split("::").first == 'Admin' %>
-            <li class='<%= 'active' if params[:controller] == 'admin/base' %>'><%= link_to "Админка", admin_root_path %></li>
+          <li class="<%= 'active' if current_page?(page_path(@main_page)) %>"><%= link_to '/', root_path, data: {toggle: 'tooltip', placement: 'bottom'}, title: 'Первоначальная страница сайта' %></li>
+          <% if controller.class.name.split('::').first == 'Admin' %>
+            <li class='<%= 'active' if params[:controller] == 'admin/base' %>'><%= link_to 'Админка', admin_root_path %></li>
             <% if params[:controller] == 'admin/users' %>
-              <li class='active'><%= link_to "Пользователи", admin_users_path %></li>
+              <li class='active'><%= link_to 'Пользователи', admin_users_path %></li>
             <% end %>
             <% if params[:controller] == 'admin/pages' %>
-              <li class='active'><%= link_to "Страницы", admin_pages_path %></li>
+              <li class='active'><%= link_to 'Страницы', admin_pages_path %></li>
             <% end %>
             <% if params[:controller] == 'admin/items' %>
-              <li class='active'><%= link_to "Новости", admin_items_path %></li>
+              <li class='active'><%= link_to 'Новости', admin_items_path %></li>
             <% end %>
             <% if params[:controller] == 'admin/articles' %>
-              <li class='active'><%= link_to "Статьи", admin_articles_path %></li>
+              <li class='active'><%= link_to 'Статьи', admin_articles_path %></li>
             <% end %>
           <% end %>
           <% if params[:controller] == 'items' %>
-            <li class='active'><%= link_to "Новости", items_path %></li>
+            <li class='active'><%= link_to 'Новости', items_path %></li>
           <% end %>
           <% if params[:controller] == 'articles' %>
-              <li class='active'><%= link_to "Статьи", admin_articles_path %></li>
+              <li class='active'><%= link_to 'Статьи', admin_articles_path %></li>
           <% end %>
           <% if params[:controller] == 'pages' %>
             <li class='active'><%= link_to @page.name, page_path(@page) %></li>
@@ -55,20 +55,20 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <% unless user_signed_in? %>
-            <li><%= link_to ' Зарегистрироваться', new_user_registration_path, class: "glyphicon glyphicon-user", data: {toggle: "tooltip", placement: "bottom"}, title: "Зарегистрироваться на сайте" %></li>
-            <li><%= link_to ' Войти', new_user_session_path, class: "glyphicon glyphicon-log-in", data: {toggle: "tooltip", placement: "bottom"}, title: "Войти на сайт под созданной учетной записью" %></li>
+            <li><%= link_to ' Зарегистрироваться', new_user_registration_path, class: 'glyphicon glyphicon-user', data: {toggle: 'tooltip', placement: 'bottom'}, title: 'Зарегистрироваться на сайте' %></li>
+            <li><%= link_to ' Войти', new_user_session_path, class: 'glyphicon glyphicon-log-in', data: {toggle: 'tooltip', placement: 'bottom'}, title: 'Войти на сайт под созданной учетной записью' %></li>
           <% end %>
           <% admin_only do %>
             <li>
-              <%= link_to " Админка", admin_root_path, class: "glyphicon glyphicon-wrench", data: {toggle: "tooltip", placement: "bottom"}, title: "Административная часть для управления сайтом" %>
+              <%= link_to ' Админка', admin_root_path, class: 'glyphicon glyphicon-wrench', data: {toggle: 'tooltip', placement: 'bottom'}, title: 'Административная часть для управления сайтом' %>
             </li>
           <% end %>
           <% if user_signed_in? %>
             <li>
-                <%= link_to ' ' + current_user.email, user_path(current_user), class: "glyphicon glyphicon-user", data: {toggle: "tooltip", placement: "bottom"}, title: "Ваш профиль" %>
+                <%= link_to ' ' + current_user.email, user_path(current_user), class: 'glyphicon glyphicon-user', data: {toggle: 'tooltip', placement: 'bottom'}, title: 'Ваш профиль' %>
             </li>
             <li>
-              <%= link_to ' Выход', destroy_user_session_path, method: :delete, class: 'glyphicon glyphicon-log-out', data: {toggle: "tooltip", placement: "bottom"}, title: "Разрегистрироваться" %>
+              <%= link_to ' Выход', destroy_user_session_path, method: :delete, class: 'glyphicon glyphicon-log-out', data: {toggle: 'tooltip', placement: 'bottom'}, title: 'Разрегистрироваться' %>
             </li>
           <% end %>
         </ul>
@@ -101,14 +101,14 @@
       	<h3 class='text-center'>Новости</h3>
         <table class="table table-hover">
           <tbody>
-            <% Item.order("created_at DESC").limit(10).each do | item | %>
+            <% Item.order('created_at DESC').limit(10).each do | item | %>
               <tr>
                 <td><%= localize(item.created_at, :format => :long) %> - <%= link_to item.title, item_path(item) %></td>
               </tr>
             <% end %>
           </tbody>
         </table>
-        <%= link_to "Все новости", items_path %>
+        <%= link_to 'Все новости', items_path %>
       </div>
     </div>
   </div>
@@ -123,7 +123,7 @@
       </div>
     </div>
   </div>
-  <div class="panel panel-default", id='developer_panel'>
+  <div class="panel panel-default" id='developer-panel'>
     <div class="panel-heading">Extra Data</div>
     <div class="panel-body">Developed by <a href='http://datacrafts.io/'>datacrafts.io</a></div>
   </div>

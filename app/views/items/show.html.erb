@@ -1,4 +1,4 @@
-<% title(@item.title, "Новости") %>
+<% title(@item.title, 'Новости') %>
 <div class="page-header">
 	<h3><%= @item.title %></h3>
 </div>
@@ -21,4 +21,4 @@
   <% end %>
 </div>
 
-<%= render "comments/form", item: @item, comment: @comment %>
+<%= render 'comments/form', item: @item, comment: @comment %>

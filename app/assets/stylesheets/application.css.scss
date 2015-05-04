@@ -1,11 +1,11 @@
-@import "items";
-@import "admin/items";
-@import "comments";
-@import "bootstrap-sprockets";
-@import "bootstrap";
-@import "bootsy";
-@import "font-awesome";
-@import "articles";
+@import 'items';
+@import 'admin/items';
+@import 'comments';
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import 'bootsy';
+@import 'font-awesome';
+@import 'articles';
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -23,31 +23,32 @@
  *= require jquery-ui
  */
 
-#head_panel_up {
+#head-panel-up {
   display: none;
 }
+
 .navbar-inverse {
-  border-radius: 0px;
+  border-radius: 0;
 }
 
 #head {
   @extend .navbar-inverse;
-  text-align: center;
-  border: 0px;
+  border: 0;
   display: none;
+  text-align: center;
 
   img {
-    border-radius: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    height: 150px;
     border: solid 1px silver;
+    border-radius: 10px;
+    height: 150px;
+    margin-bottom: 10px;
+    margin-top: 10px;
   }
 }
 
 .page-header {
+  padding-bottom: 0;
   position: relative;
-  padding-bottom: 0px;
 
   &:first-child {
     margin-top: 20px;
@@ -57,22 +58,25 @@
 ul.actions {
   list-style-type: none;
   position: absolute;
-  top: 4px;
   right: 2px;
+  top: 4px;
 
   li {
     display: inline-block;
   }
 }
 
-a.new, a.edit, a.delete {
+a.new,
+a.edit,
+a.delete {
   @extend .btn;
 
   &:before {
-    font-family: "FontAwesome";
-    padding-right: 0.5em;
+    font-family: 'FontAwesome';
+    padding-right: .5em;
   }
 }
+
 a.new {
   @extend .btn-success;
 
@@ -100,7 +104,7 @@ a.delete {
 #admin h3 {
   font-size: 16px;
   font-weight: bold;
-  margin: 20px 0px 0px;
+  margin: 20px 0 0;
 }
 
 .alert-notice {
@@ -128,29 +132,29 @@ p#author {
   padding-left: 15px;
 }
 
-#developer_panel {
-    width: 300px;
-    position: fixed;
-    display: none;
-    bottom: 50px;
-    right: 10px;
+#developer-panel {
+  bottom: 50px;
+  display: none;
+  position: fixed;
+  right: 10px;
+  width: 300px;
 }
 
-.comment_panel {
-  float:right;
+.comment-panel {
+  float: right;
   position: relative;
   margin-top: 15px;
 }
 
 .glyphicon-trash {
-  display: none;
-  margin-top: 19;
-  margin-left: 12px;
   color: #5a5555;
-  font-family: "FontAwesome";
+  display: none;
+  float: right;
+  font-family: 'FontAwesome';
   &:before {
     @extend .fa-trash;
   }
-  float: right;
+
+  margin-left: 12px;
   margin-top: 15px;
 }

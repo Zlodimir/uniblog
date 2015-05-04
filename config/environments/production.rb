@@ -75,7 +75,7 @@ Rails.application.configure do
   #:enable_starttls_auto => true
   :address => ENV['MAILGUN_SMTP_SERVER'],
   :port => ENV['MAILGUN_SMTP_PORT'],
-  :authentication => "plain",
+  :authentication => 'plain',
   :user_name => ENV['MAILGUN_SMTP_LOGIN'],
   :password => ENV['MAILGUN_SMTP_PASSWORD'],
   :domain => 'doctorova-ts.herokuapp.com',

@@ -1,16 +1,16 @@
-<% title(@user.email, "Пользователи") %>
+<% title(@user.email, 'Пользователи') %>
 <div class="page-header">
 	<h2>Пользователь</h2>
 
 	<ul class="actions">
-		<li><%= link_to "Редактировать", edit_user_path(@user), class: "edit" %></li>
+		<li><%= link_to 'Редактировать', edit_user_path(@user), class: 'edit' %></li>
 		<% admin_only do %>
 			<li>
-				<%= link_to "Удалить",
+				<%= link_to 'Удалить',
 				admin_user_path(@user),
 				method: :delete,
-				data: {confirm: "Вы действительно хотите удалить данного пользователя?"},
-				class: "delete"
+				data: {confirm: 'Вы действительно хотите удалить данного пользователя?'},
+				class: 'delete'
 				%>
 			</li>
 		<% end %>
@@ -20,12 +20,12 @@
 	<div class="col-md-3">
 		<% if @user.avatar.blank? %>
 		  <% if Rails.env.production? %>
-		    <%= image_tag AWS::S3::S3Object.url_for('no_photo.jpg', 'doctorova', :authenticated => true), :size => "120"  %>
+		    <%= image_tag AWS::S3::S3Object.url_for('no_photo.jpg', 'doctorova', :authenticated => true), :size => '120' %>
 		  <% else %>
-		    <%= image_tag 'no_photo.jpg',  :size => "120" %>
+		    <%= image_tag 'no_photo.jpg',  :size => '120' %>
 		  <% end %>
 		<% else %>
-		  <%= image_tag @user.avatar_url.to_s,  :size => "120" %>
+		  <%= image_tag @user.avatar_url.to_s,  :size => '120' %>
 		<% end %>
 	</div>
     <div class="col-md-9">

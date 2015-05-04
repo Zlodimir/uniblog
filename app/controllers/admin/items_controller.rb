@@ -18,11 +18,11 @@ class Admin::ItemsController < Admin::BaseController
 
 	def update
 		if @item.update(item_params)
-			flash[:notice] = "Новость изменена"
+			flash[:notice] = 'Новость изменена'
 			redirect_to admin_item_path(@item)
 		else
-			flash.now[:alert] = "Новость не изменена"
-			render "edit"
+			flash.now[:alert] = 'Новость не изменена'
+			render 'edit'
 		end
 	end
 
@@ -36,13 +36,13 @@ class Admin::ItemsController < Admin::BaseController
 			redirect_to admin_item_path(@item)
 		else
 			flash.now[:alert] ='Новость не создана'
-			render "new"
+			render 'new'
 		end
 	end
 
 	def destroy
 		@item.destroy
-		flash[:notice] = "Новость удалена"
+		flash[:notice] = 'Новость удалена'
 		redirect_to admin_items_path
 	end
 

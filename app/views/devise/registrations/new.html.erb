@@ -1,4 +1,4 @@
-<% title("Регистрация") %>
+<% title('Регистрация') %>
 <div class="page-header">
   <h2>Регистрация</h2>
 </div>
@@ -7,14 +7,14 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true, label: "E-mail", placeholder: "Введите адрес электронной почты" %>
-    <%= f.input :lastname, required: true, label: "Фамилия", placeholder: "Введите вашу фамилию" %>
-    <%= f.input :firstname, required: true, label: "Имя", placeholder: "Введите вашe имя" %>
-    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} символов минимум" if @validatable), label: "Пароль", placeholder: "Введите пароль" %>
-    <%= f.input :password_confirmation, required: true, label: "Подтверждение пароля", placeholder: "Введите подтверждение пароля" %>
+    <%= f.input :email, required: true, autofocus: true, label: 'E-mail', placeholder: 'Введите адрес электронной почты' %>
+    <%= f.input :lastname, required: true, label: 'Фамилия', placeholder: 'Введите вашу фамилию' %>
+    <%= f.input :firstname, required: true, label: 'Имя', placeholder: 'Введите вашe имя' %>
+    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} символов минимум" if @validatable), label: 'Пароль', placeholder: 'Введите пароль' %>
+    <%= f.input :password_confirmation, required: true, label: 'Подтверждение пароля', placeholder: 'Введите подтверждение пароля' %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Зарегистрироваться", class: "btn btn-primary btn-md" %>
+    <%= f.button :submit, 'Зарегистрироваться', class: 'btn btn-primary btn-md' %>
   </div>
 <% end %>

@@ -44,7 +44,7 @@ class Admin::PagesController < Admin::BaseController
 
   def destroy
     @page.destroy
-	  flash[:notice] = "Страница удалена"
+	  flash[:notice] = 'Страница удалена'
 	  redirect_to admin_pages_path
   end
 
