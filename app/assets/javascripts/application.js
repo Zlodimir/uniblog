@@ -16,7 +16,6 @@
 //= require jquery.cookie
 //= require bootstrap-sprockets
 //= require bootsy
-//= require turbolinks
 //= require main
 //= require_tree .
 
