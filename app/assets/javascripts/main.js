@@ -6,11 +6,11 @@ $(document).ready(function(){
     if (position == 'up') {
       $('.navbar-inverse').css('border-top','0px');
       $('#head-panel-down').show();
-      $('#head-panel-up').css('display', 'none');
+      $('#head-panel-up').hide();
       $('#head').hide();
     } else {
       $('.navbar-inverse').css('border-top','solid 1px silver');
-      $('#head-panel-down').css('display', 'none');
+      $('#head-panel-down').hide();
       $('#head-panel-up').show();
       $('#head').show();
     }
@@ -55,9 +55,4 @@ $(document).ready(function(){
     $('#head-panel-up').fadeOut('slow');
     $("#head").slideUp("slow");
   });
-  /*
-  if (typeof $.cookie('slide-top-panel') === 'undefined') {
-    $("#head-panel-down").click();
-  };
-  */
 });
