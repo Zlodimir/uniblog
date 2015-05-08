@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   validates :firstname, presence: true, length: {minimum: 2}
 
   def to_s
-  	"#{firstname} #{lastname} #{email} (#{admin? ? 'Админ' : 'Пользователь'})"
+  	#"#{firstname} #{lastname} #{email} (#{admin? ? 'Админ' : 'Пользователь'})"
+    "#{firstname} #{lastname} #{email}"
   end
 end

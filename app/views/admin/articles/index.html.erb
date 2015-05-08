@@ -23,7 +23,7 @@
         <td><%= article.id %></td>
         <td><%= link_to article.title, admin_article_path(article) %></td>
         <td>
-          <%= article.author.firstname + ' ' + article.author.lastname + ' ' + article.author.email %>
+          <%= article.author.to_s %>
           <% if article.author.admin? %>
               <span class="label label-success">Admin</span>
           <% end %>

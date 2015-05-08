@@ -21,8 +21,8 @@
         <td><%= item.id %></td>
         <td><%= link_to item.title, admin_item_path(item) %></td>
         <td>
-          <%= item.author.firstname + ' ' + item.author.lastname + ' ' + item.author.email %>
-         <% if item.author.admin? %>
+          <%= item.author.to_s %>
+          <% if item.author.admin? %>
             <span class="label label-success">Admin</span>
           <% end %>
         </td>
