@@ -3,6 +3,7 @@
 class AttachmentUploader < CarrierWave::Uploader::Base
 
   process :store_file_attributes
+  after :remove, :delete_empty_upstream_dirs
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -54,6 +55,13 @@ class AttachmentUploader < CarrierWave::Uploader::Base
 
   def store_file_attributes
     model.size = File.size(file.file) if file && model
+  end
+
+  def delete_empty_upstream_dirs
+    path = ::File.expand_path(store_dir, root)
+    Dir.delete(path)
+  rescue SystemCallError
+    true # nothing, the dir is not empty
   end
 
 end
