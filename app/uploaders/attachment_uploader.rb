@@ -53,9 +53,7 @@ class AttachmentUploader < CarrierWave::Uploader::Base
   private
 
   def store_file_attributes
-    if file && model
-      model.size  = File.size(file.file)
-    end
+    model.size = File.size(file.file) if file && model
   end
 
 end

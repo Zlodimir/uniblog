@@ -3,22 +3,16 @@ class UsersController < ApplicationController
   before_action :check_current_user, only: [:show, :edit, :update]
   
   def show
-
   end
 
   def edit
-    #@asset = @user.build_asset
   end
 
   def update
-    if params[:user][:password].blank?
-      params[:user].delete(:password)
-    end
+    params[:user].delete(:password) if params[:user][:password].blank?
     @user.attributes = user_params
     @user.avatar = params[:user][:avatar]
-    #byebug
     if @user.save(user_params)
-      # Cool, you're done!
       flash[:notice] = 'Пользователь изменен'
       redirect_to user_path(@user)
     else

@@ -2,7 +2,7 @@ class Admin::ArticlesController < Admin::BaseController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   def index
-    @articles = Article.all #.order('sort') params[:article]
+    @articles = Article.all
   end
 
   def new
@@ -19,7 +19,7 @@ class Admin::ArticlesController < Admin::BaseController
 
   def create
     @article = Article.new
-    @article.attributes = article_param
+    @article.attributes = article_params
     @article.author = current_user
 
     if @article.save
@@ -32,9 +32,7 @@ class Admin::ArticlesController < Admin::BaseController
   end
 
   def update
-    #byebug
-    if @article.update(article_param)
-
+    if @article.update(article_params)
       # save uploaded files
       if params[:article][:attachments]
         params[:article][:attachments]['attach'].each do |a|
@@ -45,9 +43,7 @@ class Admin::ArticlesController < Admin::BaseController
       # delete attached files
       if params[:delete_attachments]
         params[:delete_attachments].each do |id, delete|
-          if delete=='1'
-            @article.attachments.find(id).destroy!
-          end
+          @article.attachments.find(id).destroy! if delete == '1'
         end
       end
 
@@ -71,7 +67,7 @@ class Admin::ArticlesController < Admin::BaseController
     @article = Article.find(params[:id])
   end
 
-  def article_param
+  def article_params
     # Never trust parameters from the scary internet, only allow the white list through.
     params.require(:article).permit(:title, :text, :bootsy_image_gallery_id)
   end
