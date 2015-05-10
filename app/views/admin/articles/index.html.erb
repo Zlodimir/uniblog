@@ -25,14 +25,14 @@
         <td>
           <%= render 'admin/shared/author_info', locals: {author: article.author} %>
         </td>
-        <td style="width: 1px;">
+        <td>
           <%= link_to edit_admin_article_path(article), class: 'btn btn-default btn-xs' do %>
-              <i class="glyphicon glyphicon-pencil"></i>
+              <i class="fa fa-pencil fa-lg"></i>
           <% end %>
         </td>
-        <td style="width: 1px;">
+        <td>
           <%= link_to admin_article_path(article), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-xs' do %>
-              <i class="glyphicon glyphicon-trash"></i>
+              <i class="fa fa-trash-o fa-lg"></i>
           <% end %>
         </td>
       </tr>
