@@ -13,6 +13,8 @@
       <th>ID</th>
       <th>Название</th>
       <th>Автор</th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -23,7 +25,16 @@
         <td>
           <%= render 'admin/shared/author_info', locals: {author: page.author} %>
         </td>
-        <td>
+        <td style="width: 1px;">
+          <%= link_to edit_admin_page_path(page), class: 'btn btn-default btn-xs' do %>
+              <i class="fa fa-pencil fa-lg"></i>
+          <% end %>
+        </td>
+        <td style="width: 1px;">
+          <%= link_to admin_page_path(page), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-xs' do %>
+              <i class="fa fa-trash-o fa-lg"></i>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

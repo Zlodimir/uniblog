@@ -9,34 +9,34 @@
 <p>Список всех созданных статей:</p>
 <table class="table table-hover">
   <thead>
-  <tr>
-    <th>ID</th>
-    <th>Название</th>
-    <th>Автор</th>
-    <th></th>
-    <th></th>
-  </tr>
+    <tr>
+      <th>ID</th>
+      <th>Название</th>
+      <th>Автор</th>
+      <th></th>
+      <th></th>
+    </tr>
   </thead>
   <tbody>
-  <% @articles.each do | article | %>
+    <% @articles.each do | article | %>
       <tr>
         <td><%= article.id %></td>
         <td><%= link_to article.title, admin_article_path(article) %></td>
         <td>
           <%= render 'admin/shared/author_info', locals: {author: article.author} %>
         </td>
-        <td>
+        <td style="width: 1px;">
           <%= link_to edit_admin_article_path(article), class: 'btn btn-default btn-xs' do %>
               <i class="fa fa-pencil fa-lg"></i>
           <% end %>
         </td>
-        <td>
+        <td style="width: 1px;">
           <%= link_to admin_article_path(article), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-xs' do %>
               <i class="fa fa-trash-o fa-lg"></i>
           <% end %>
         </td>
       </tr>
-  <% end %>
+    <% end %>
   </tbody>
 </table>
 <div class='text-center'><%#= paginate @articles %></div>
