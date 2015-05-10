@@ -1,0 +1,4 @@
+<%= locals[:author].to_s %>
+<% if locals[:author].admin? %>
+  <span class="label label-success">Admin</span>
+<% end %>

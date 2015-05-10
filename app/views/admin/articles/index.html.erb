@@ -23,10 +23,7 @@
         <td><%= article.id %></td>
         <td><%= link_to article.title, admin_article_path(article) %></td>
         <td>
-          <%= article.author.to_s %>
-          <% if article.author.admin? %>
-              <span class="label label-success">Admin</span>
-          <% end %>
+          <%= render 'admin/shared/author_info', locals: {author: article.author} %>
         </td>
         <td style="width: 1px;">
           <%= link_to edit_admin_article_path(article), class: 'btn btn-default btn-xs' do %>
