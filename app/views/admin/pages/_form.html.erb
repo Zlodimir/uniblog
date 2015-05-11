@@ -1,9 +1,9 @@
-<%= simple_form_for([:admin, page], :html=> { class: 'longf' }) do |f| %>
+<%= simple_form_for([:admin, page], html: { class: 'longf' }) do |f| %>
 	<%= label_tag dom_id(page), 'Порядковый номер в меню' %>
 	<%= select_tag 'page[sort]', options_for_select(page_sort, page.sort), include_blank: true %>
 	<%= f.input :primary, label: 'Главная страница?' %>
 	<span class="help-block">Внимание! Главная страница должна быть только одна!</span>
 	<%= f.input :name, label: 'Название' %>
-	<%= f.input :content, as: :bootsy, label: 'Содержание', :input_html => {:rows => 15} %>
+	<%= f.input :content, as: :bootsy, label: 'Содержание', input_html: { rows: 15 } %>
 	<%= f.button :submit, class: 'btn-primary' %>
 <% end %>

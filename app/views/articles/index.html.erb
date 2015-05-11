@@ -15,7 +15,7 @@
   <tbody>
     <% @articles.each do |article| %>
       <tr>
-        <td><%= localize(article.created_at, :format => :only_date) %></td>
+        <td><%= localize(article.created_at, format: :only_date) %></td>
         <td><%= link_to article.title, article %></td>
         <td>
           <%= article.author.to_s %>

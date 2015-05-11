@@ -36,7 +36,7 @@ class Admin::ArticlesController < Admin::BaseController
       # save uploaded files
       if params[:article][:attachments]
         params[:article][:attachments]['attach'].each do |a|
-          @attachment = @article.attachments.create!(:attach => a, :article_id => @article.id)
+          @attachment = @article.attachments.create!(attach: a, article_id: @article.id)
         end
       end
 
