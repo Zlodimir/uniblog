@@ -1,16 +1,13 @@
 Rails.application.routes.draw do
 
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
-  #get 'items/index'
-
-  #get 'items/show'
 
   namespace :admin do
     root 'base#index'
     resources :users, only: [:index, :destroy]
-    resources :items, only: [:show, :index, :new, :update, :destroy, :create, :edit]
-    resources :pages, only: [:show, :index, :new, :update, :destroy, :create, :edit]
-    resources :articles, only: [:show, :index, :new, :update, :destroy, :create, :edit]
+    resources :items
+    resources :pages
+    resources :articles
     resources :comments, only: [:destroy]
   end
 
