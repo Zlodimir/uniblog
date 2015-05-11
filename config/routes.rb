@@ -85,6 +85,5 @@ Rails.application.routes.draw do
   end
   
   resources :articles, only: [:show, :index]
-  match 'attachment/:id', to: 'articles#get_attachment', via: 'get'
 end
 
