@@ -23,8 +23,7 @@ class Admin::PagesController < Admin::BaseController
   	@page.author = current_user
 
   	if @page.save
-  	  flash[:notice] = 'Страница создана'
-  	  redirect_to admin_page_path(@page)
+  	  redirect_to admin_page_path(@page), notice: 'Страница создана'
   	else
   	  flash.now[:alert] = 'Страница не создана'
   	  render 'new'
@@ -34,8 +33,7 @@ class Admin::PagesController < Admin::BaseController
   def update
     #byebug
   	if @page.update(page_param)
-  	  flash[:notice] = 'Страница изменена'
-  	  redirect_to admin_page_path(@page)
+  	  redirect_to admin_page_path(@page), notice: 'Страница изменена'
   	else
   	  flash.now[:alert] = 'Страница не изменена'
   	  render 'edit'
@@ -44,8 +42,7 @@ class Admin::PagesController < Admin::BaseController
 
   def destroy
     @page.destroy
-	  flash[:notice] = 'Страница удалена'
-	  redirect_to admin_pages_path
+	  redirect_to admin_pages_path, notice: 'Страница удалена'
   end
 
   private

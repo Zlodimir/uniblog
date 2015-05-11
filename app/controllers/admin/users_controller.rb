@@ -7,8 +7,7 @@ class Admin::UsersController < Admin::BaseController
 
   def destroy
   	@user.destroy
-	  flash[:notice] = 'Пользователь удален'
-	  redirect_to admin_users_path
+	  redirect_to admin_users_path, notice: 'Пользователь удален'
   end
 
   private
@@ -16,7 +15,6 @@ class Admin::UsersController < Admin::BaseController
   def set_user
     @user = User.find(params[:id])
 	  rescue ActiveRecord::RecordNotFound
-	  flash[:alert] = 'Пользователь не найден'
-	  redirect_to admin_users_path
+	  redirect_to admin_users_path, alert: 'Пользователь не найден'
   end
 end

@@ -18,8 +18,7 @@ class Admin::ItemsController < Admin::BaseController
 
 	def update
 		if @item.update(item_params)
-			flash[:notice] = 'Новость изменена'
-			redirect_to admin_item_path(@item)
+			redirect_to admin_item_path(@item), notice: 'Новость изменена'
 		else
 			flash.now[:alert] = 'Новость не изменена'
 			render 'edit'
@@ -32,8 +31,7 @@ class Admin::ItemsController < Admin::BaseController
 		@item.author = current_user
 
 		if @item.save
-			flash[:notice] = 'Новость создана'
-			redirect_to admin_item_path(@item)
+			redirect_to admin_item_path(@item), notice: 'Новость создана'
 		else
 			flash.now[:alert] ='Новость не создана'
 			render 'new'
@@ -42,8 +40,7 @@ class Admin::ItemsController < Admin::BaseController
 
 	def destroy
 		@item.destroy
-		flash[:notice] = 'Новость удалена'
-		redirect_to admin_items_path
+		redirect_to admin_items_path, notice: 'Новость удалена'
 	end
 
 	private

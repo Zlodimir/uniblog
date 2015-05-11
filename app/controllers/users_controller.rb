@@ -13,8 +13,7 @@ class UsersController < ApplicationController
     @user.attributes = user_params
     @user.avatar = params[:user][:avatar]
     if @user.save(user_params)
-      flash[:notice] = 'Пользователь изменен'
-      redirect_to user_path(@user)
+      redirect_to user_path(@user), notice: 'Пользователь изменен'
     else
       flash.now[:alert] = 'Пользователь не изменен'
       render 'edit'
@@ -26,8 +25,7 @@ class UsersController < ApplicationController
   def check_current_user
     if current_user.try(:admin?) == false || current_user.try(:admin?).nil?
       if @user != current_user
-        flash[:alert] = 'Ошибка!'
-        redirect_to root_path
+        redirect_to root_path, alert: 'Ошибка!'
       end
     end
   end
@@ -39,7 +37,6 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find(params[:id])
     rescue ActiveRecord::RecordNotFound
-    flash[:alert] = 'Пользователь не найден'
-    redirect_to root_path
+    redirect_to root_path, alert: 'Пользователь не найден'
   end
 end

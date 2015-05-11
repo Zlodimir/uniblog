@@ -23,8 +23,7 @@ class Admin::ArticlesController < Admin::BaseController
     @article.author = current_user
 
     if @article.save
-      flash[:notice] = 'Статья создана'
-      redirect_to admin_article_path(@article)
+      redirect_to admin_article_path(@article), notice: 'Статья создана'
     else
       flash.now[:alert] = 'Статья не создана'
       render 'new'
@@ -47,8 +46,7 @@ class Admin::ArticlesController < Admin::BaseController
         end
       end
 
-      flash[:notice] = 'Статья изменена'
-      redirect_to admin_article_path(@article)
+      redirect_to admin_article_path(@article), notice: 'Статья изменена'
     else
       flash.now[:alert] = 'Статья не изменена'
       render 'edit'
@@ -57,8 +55,7 @@ class Admin::ArticlesController < Admin::BaseController
 
   def destroy
     @article.destroy
-    flash[:notice] = 'Статья удалена'
-    redirect_to admin_articles_path
+    redirect_to admin_articles_path, notice: 'Статья удалена'
   end
 
   private
