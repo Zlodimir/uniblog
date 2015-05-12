@@ -1,12 +1,13 @@
 class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
   before_action :set_pages
+  before_action :set_last_news
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
   def index
-  	
+
   end
 
 protected
@@ -26,4 +27,9 @@ protected
       @main_page = Page.first
     end
   end
+
+  def set_last_news
+    @latest_items = Item.latest_items
+  end
+
 end

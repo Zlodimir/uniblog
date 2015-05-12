@@ -101,7 +101,7 @@
       	<h3 class='text-center'>Новости</h3>
         <table class="table table-hover">
           <tbody>
-            <% Item.order('created_at DESC').limit(10).each do | item | %>
+            <% @latest_items.each do | item | %>
               <tr>
                 <td><%= localize(item.created_at, format: :long) %> - <%= link_to item.title, item_path(item) %></td>
               </tr>

@@ -7,4 +7,9 @@ class Item < ActiveRecord::Base
   validates :description, presence: true, length: {minimum: 2}
 
   paginates_per 15
+
+  def self.latest_items
+    order(created_at: :desc).limit(10)
+  end
+
 end
