@@ -28,7 +28,7 @@
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
           <li class="<%= 'active' if current_page?(page_path(@main_page)) %>"><%= link_to '/', root_path, data: {toggle: 'tooltip', placement: 'bottom'}, title: 'Первоначальная страница сайта' %></li>
-          <% if controller.class.name.split('::').first == 'Admin' %>
+          <% if params[:controller] =~ /^(admin)/ %>
             <li class='<%= 'active' if params[:controller] == 'admin/base' %>'><%= link_to 'Админка', admin_root_path %></li>
             <% if params[:controller] == 'admin/users' %>
               <li class='active'><%= link_to 'Пользователи', admin_users_path %></li>
