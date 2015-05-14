@@ -27,7 +27,7 @@ ready = ->
     $('<input/>').attr('type', 'file').addClass('upload').on('change', selectFileHandler).appendTo('#button span .file-upload')
 
   deleteBtnHandler = () ->
-    $(this).parent().parent().remove()
+    $(this).closest('tr').remove()
 
   @removeBtnHandler = (elem) ->
     # отмечаем файл на удаление с сервера
