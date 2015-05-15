@@ -36,7 +36,7 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
-    rescue ActiveRecord::RecordNotFound
+  rescue ActiveRecord::RecordNotFound
     redirect_to root_path, alert: 'Пользователь не найден'
   end
 end

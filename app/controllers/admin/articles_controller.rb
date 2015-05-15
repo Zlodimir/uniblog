@@ -63,7 +63,7 @@ class Admin::ArticlesController < Admin::BaseController
     # Use callbacks to share common setup or constraints between actions.
     @article = Article.find(params[:id])
   rescue ActiveRecord::RecordNotFound
-    redirect_to admin_articles_path, alert: 'Статья не найден'
+    redirect_to admin_articles_path, alert: 'Статья не найдена'
   end
 
   def article_params
