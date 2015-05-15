@@ -59,6 +59,7 @@ class Admin::ArticlesController < Admin::BaseController
   end
 
   private
+
   def set_article
     # Use callbacks to share common setup or constraints between actions.
     @article = Article.find(params[:id])

@@ -16,7 +16,8 @@ class CommentsController < ApplicationController
     redirect_to polymorphic_path(@commentable)
   end
 
-private
+  private
+
   def comment_params
     params.require(:comment).permit(:text)
   end
