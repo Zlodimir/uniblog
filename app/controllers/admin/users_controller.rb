@@ -1,5 +1,5 @@
 class Admin::UsersController < Admin::BaseController
-  before_action :set_user, only: [:destroy]
+  before_action :set_user!, only: [:destroy]
 
   def index
     @users = User.order(:lastname)
@@ -12,7 +12,7 @@ class Admin::UsersController < Admin::BaseController
 
   private
 
-  def set_user
+  def set_user!
     @user = User.find(params[:id])
   rescue ActiveRecord::RecordNotFound
 	  redirect_to admin_users_path, alert: 'Пользователь не найден'

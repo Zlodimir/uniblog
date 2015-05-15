@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update]
-  before_action :check_current_user, only: [:show, :edit, :update]
+  before_action :set_user!, only: [:show, :edit, :update]
+  before_action :check_current_user!, only: [:show, :edit, :update]
   
   def show
   end
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 
   private
 
-  def check_current_user
+  def check_current_user!
     if current_user.try(:admin?) == false || current_user.try(:admin?).nil?
       if @user != current_user
         redirect_to root_path, alert: 'Ошибка!'
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:lastname, :firstname, :email, :password, :admin, :avatar)
   end
 
-  def set_user
+  def set_user!
     @user = User.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     redirect_to root_path, alert: 'Пользователь не найден'

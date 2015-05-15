@@ -1,5 +1,5 @@
 class Admin::ArticlesController < Admin::BaseController
-  before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :set_article!, only: [:show, :edit, :update, :destroy]
 
   def index
     @articles = Article.all
@@ -60,7 +60,7 @@ class Admin::ArticlesController < Admin::BaseController
 
   private
 
-  def set_article
+  def set_article!
     # Use callbacks to share common setup or constraints between actions.
     @article = Article.find(params[:id])
   rescue ActiveRecord::RecordNotFound
