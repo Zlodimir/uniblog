@@ -16,7 +16,7 @@ class ArticlesController < ApplicationController
   def set_article!
     @article = Article.find(params[:id])
   rescue ActiveRecord::RecordNotFound
-    redirect_to articles_path, alert: 'Статья не найден'
+    redirect_to articles_path, alert: 'Статья не найдена'
   end
 
 end
