@@ -33,7 +33,7 @@ $ ->
     # отмечаем файл на удаление с сервера
     $(elem).parent().find('input[type=checkbox]').prop('checked', true)
     # скрываем запись таблицы
-    $(elem).parent().parent().hide()
+    $(elem).closest('tr').hide()
 
   selectFileHandler = () ->
     # переносим input в таблицу
