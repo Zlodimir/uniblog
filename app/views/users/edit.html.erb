@@ -3,7 +3,7 @@
 	<h2><%= @user.email %></h2>
 </div>
 
-<%= simple_form_for [@user] do | f | %>
+<%= simple_form_for [@user] do |f| %>
 	<%= f.input :lastname, label: 'Фамилия' %>
 	<%= f.input :firstname, label: 'Имя' %>
 	<%= f.input :password, label: 'Пароль'%>

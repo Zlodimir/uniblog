@@ -18,12 +18,12 @@
     </tr>
   </thead>
   <tbody>
-    <% @articles.each do | article | %>
+    <% @articles.each do |article| %>
       <tr>
         <td><%= article.id %></td>
         <td><%= link_to article.title, admin_article_path(article) %></td>
         <td>
-          <%= render 'admin/shared/author_info', locals: {author: article.author} %>
+          <%= render 'admin/shared/author_info', author: article.author %>
         </td>
         <td style="width: 1px;">
           <%= link_to edit_admin_article_path(article), class: 'btn btn-default btn-xs' do %>
