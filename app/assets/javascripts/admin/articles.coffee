@@ -4,6 +4,8 @@
 $ ->
   return if $('.file-upload').length == 0
 
+  count = 0
+
   humanFileSize = (size) ->
     i = Math.floor(Math.log(size) / Math.log(1024))
     size = ( size / Math.pow(1024, i) ).toFixed(1)
@@ -20,7 +22,9 @@ $ ->
       '<td></td>' +
       '</tr>')
     files.find('tr:last-child .btn-danger').on('click', deleteBtnHandler)
-    $input.attr('name', 'article[attachments][attach][]')
+    #$input.attr('name', 'article[attachments][attach][]')
+    $input.attr('name', 'article[attachments_attributes]['+count+'][attach]')
+    count++
     files.find('tr:last-child td:last-child').hide().append($input)
 
   addAttachBtn = () ->
@@ -44,3 +48,4 @@ $ ->
     addAttachBtn()
 
   $('.upload').on('change', selectFileHandler)
+

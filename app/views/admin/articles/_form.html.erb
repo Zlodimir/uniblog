@@ -2,46 +2,46 @@
     <%= f.input :title, label: 'Название' %>
     <%= f.input :text, as: :bootsy, label: 'Содержание', input_html: { rows: 15 } %>
 
-    <%= f.fields_for :attachments do |p| %>
 
-      <div id="button">
-        <span class="input-group">
-          <span class="file-upload btn btn-success">
-            <i class="glyphicon glyphicon-folder-open"></i>
-            &nbsp;Добавить файл
-            <%= p.file_field :attach, multiple: true, class: 'upload' %>
-          </span>
-        </span>
-      </div>
-      <br>
-
-      <table class="table table-striped">
-        <tbody id="files">
-
-          <% @attachments.each do |a| %>
-            <tr>
-              <td>
-                <%= link_to a.attach.file.filename, a.attach.url %>
-              </td>
-              <td>
-                <%= number_to_human_size(a.size) %>
-              </td>
-              <td>
-                <%= check_box 'delete_attachments', a.attributes['id'], class: 'hidden' %>
-                <div class="btn btn-danger" onclick="removeBtnHandler(this);">
-                  <i class="glyphicon glyphicon-trash"></i>
-                  &nbsp;Удалить
-                </div>
-              </td>
-            </tr>
+    <div id="button">
+      <span class="input-group">
+        <span class="file-upload btn btn-success">
+          <i class="glyphicon glyphicon-folder-open"></i>
+          &nbsp;Добавить файл
+          <%= f.simple_fields_for :attachments, @article.attachments.build do |p| %>
+            <%= p.file_field :attach, class: 'upload' %>
           <% end %>
+        </span>
+      </span>
+    </div>
+    <br>
 
-        </tbody>
-      </table>
+    <table class="table table-striped">
+      <tbody id="files">
 
-    <% end %>
+        <% @attachments.each do |attachment| %>
+          <% if !attachment.attach.blank? %>
+          <tr>
+            <td>
+              <%= link_to attachment.attach.file.filename, attachment.attach.url %>
+            </td>
+            <td>
+              <%= number_to_human_size(attachment.size) %>
+            </td>
+            <td>
+              <%= check_box 'delete_attachments', attachment.attributes['id'], class: 'hidden' %>
+              <div class="btn btn-danger" onclick="removeBtnHandler(this);">
+                <i class="glyphicon glyphicon-trash"></i>
+                &nbsp;Удалить
+              </div>
+            </td>
+          </tr>
+          <% end %>
+        <% end %>
 
-      <br>
+      </tbody>
+    </table>
+    <br>
 
     <%= f.button :submit, class: 'btn-primary' %>
 <% end %>

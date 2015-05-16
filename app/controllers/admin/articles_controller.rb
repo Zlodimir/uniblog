@@ -32,12 +32,6 @@ class Admin::ArticlesController < Admin::BaseController
 
   def update
     if @article.update(article_params)
-      # save uploaded files
-      if params[:article][:attachments]
-        params[:article][:attachments]['attach'].each do |a|
-          @attachment = @article.attachments.create!(attach: a, article_id: @article.id)
-        end
-      end
 
       # delete attached files
       if params[:delete_attachments]
@@ -69,6 +63,6 @@ class Admin::ArticlesController < Admin::BaseController
 
   def article_params
     # Never trust parameters from the scary internet, only allow the white list through.
-    params.require(:article).permit(:title, :text, :bootsy_image_gallery_id)
+    params.require(:article).permit(:title, :text, :bootsy_image_gallery_id, attachments_attributes: [:attach] )
   end
 end
