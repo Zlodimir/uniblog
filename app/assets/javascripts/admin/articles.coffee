@@ -28,11 +28,11 @@ $ ->
   deleteBtnHandler = () ->
     $(@).closest('tr').remove()
 
-  @removeBtnHandler = (elem) ->
+  removeBtnHandler = () ->
     # отмечаем файл на удаление с сервера
-    $(elem).parent().find('input[type=checkbox]').prop('checked', true)
+    $(@).parent().find('input[type=checkbox]').prop('checked', true)
     # скрываем запись таблицы
-    $(elem).closest('tr').hide()
+    $(@).closest('tr').hide()
 
   selectFileHandler = () ->
     # переносим input в таблицу
@@ -48,5 +48,9 @@ $ ->
     # создаем новый input для кнопки 'Добавить файл'
     addAttachBtn( count )
 
+  # Обработчик для кнопки 'Добавить файл'
   $('.upload').on('change', selectFileHandler)
 
+  # Обработчики для всех кнопок 'Удалить' из списка аттачей
+  $('#files .btn-danger').each (index) ->
+    $(@).on('click', removeBtnHandler)
