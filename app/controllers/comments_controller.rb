@@ -4,8 +4,8 @@ class CommentsController < ApplicationController
     @commentable = find_commentable
     if user_signed_in?
       @comment = @commentable.comments.build(comment_params)
-    	@comment.author = current_user
-    	if @comment.save
+      @comment.author = current_user
+      if @comment.save
         flash[:notice] = 'Комментарий успешно создан'
       else
         flash[:alert] = 'Комментарий не создан'
