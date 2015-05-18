@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   private
 
   def check_current_user!
-    if !current_user.try(:admin?) || current_user.try(:admin?).nil? && @user != current_user
+    if !current_user.try(:admin?) && @user != current_user
       redirect_to root_path, alert: 'Ошибка!'
     end
   end
