@@ -4,8 +4,6 @@
 $ ->
   return if $('.file-upload').length == 0
 
-  count = 0
-
   humanFileSize = (size) ->
     i = Math.floor(Math.log(size) / Math.log(1024))
     size = ( size / Math.pow(1024, i) ).toFixed(1)
@@ -22,16 +20,13 @@ $ ->
       '<td></td>' +
       '</tr>')
     files.find('tr:last-child .btn-danger').on('click', deleteBtnHandler)
-    #$input.attr('name', 'article[attachments][attach][]')
-    $input.attr('name', 'article[attachments_attributes]['+count+'][attach]')
-    count++
     files.find('tr:last-child td:last-child').hide().append($input)
 
-  addAttachBtn = () ->
-    $('<input/>').attr('type', 'file').addClass('upload').on('change', selectFileHandler).appendTo('#button span .file-upload')
+  addAttachBtn = (count) ->
+    $('<input/>').attr('type', 'file').addClass('upload').attr('name', 'article[attachments_attributes]['+count+'][attach]').on('change', selectFileHandler).appendTo('#button span .file-upload')
 
   deleteBtnHandler = () ->
-    $(this).closest('tr').remove()
+    $(@).closest('tr').remove()
 
   @removeBtnHandler = (elem) ->
     # отмечаем файл на удаление с сервера
@@ -41,11 +36,17 @@ $ ->
 
   selectFileHandler = () ->
     # переносим input в таблицу
-    $input = $(this)
+    $input = $(@)
     addTableRow($input)
 
+    # получаем номер текущий записи из текущего имени и используем
+    # его инкремент для создания новой кнопки выбора файлов
+    # например: article[attachments_attributes][3][attach]  ->  3
+    count = $input.attr('name').match(/\d/)[0]
+    count++
+
     # создаем новый input для кнопки 'Добавить файл'
-    addAttachBtn()
+    addAttachBtn( count )
 
   $('.upload').on('change', selectFileHandler)
 

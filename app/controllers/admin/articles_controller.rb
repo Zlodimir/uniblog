@@ -32,14 +32,6 @@ class Admin::ArticlesController < Admin::BaseController
 
   def update
     if @article.update(article_params)
-
-      # delete attached files
-      if params[:delete_attachments]
-        params[:delete_attachments].each do |id, delete|
-          @article.attachments.find(id).destroy! if delete == '1'
-        end
-      end
-
       redirect_to admin_article_path(@article), notice: 'Статья изменена'
     else
       flash.now[:alert] = 'Статья не изменена'
@@ -63,6 +55,6 @@ class Admin::ArticlesController < Admin::BaseController
 
   def article_params
     # Never trust parameters from the scary internet, only allow the white list through.
-    params.require(:article).permit(:title, :text, :bootsy_image_gallery_id, attachments_attributes: [:attach] )
+    params.require(:article).permit(:title, :text, :bootsy_image_gallery_id, attachments_attributes: [ :id, :attach, :_destroy ] )
   end
 end

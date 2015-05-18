@@ -2,6 +2,27 @@
     <%= f.input :title, label: 'Название' %>
     <%= f.input :text, as: :bootsy, label: 'Содержание', input_html: { rows: 15 } %>
 
+    <table class="table table-striped">
+      <tbody id="files">
+      <%= f.simple_fields_for :attachments do |a| %>
+        <tr>
+          <td>
+            <%= link_to a.object.attach.file.filename, a.object.attach.url %>
+          </td>
+          <td>
+            <%= number_to_human_size(a.object.size) %>
+          </td>
+          <td>
+            <%= a.check_box :_destroy, class: 'hidden' %>
+            <div class="btn btn-danger" onclick="removeBtnHandler(this);">
+              <i class="glyphicon glyphicon-trash"></i>
+              &nbsp;Удалить
+            </div>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
 
     <div id="button">
       <span class="input-group">
@@ -14,33 +35,6 @@
         </span>
       </span>
     </div>
-    <br>
-
-    <table class="table table-striped">
-      <tbody id="files">
-
-        <% @attachments.each do |attachment| %>
-          <% if !attachment.attach.blank? %>
-          <tr>
-            <td>
-              <%= link_to attachment.attach.file.filename, attachment.attach.url %>
-            </td>
-            <td>
-              <%= number_to_human_size(attachment.size) %>
-            </td>
-            <td>
-              <%= check_box 'delete_attachments', attachment.attributes['id'], class: 'hidden' %>
-              <div class="btn btn-danger" onclick="removeBtnHandler(this);">
-                <i class="glyphicon glyphicon-trash"></i>
-                &nbsp;Удалить
-              </div>
-            </td>
-          </tr>
-          <% end %>
-        <% end %>
-
-      </tbody>
-    </table>
     <br>
 
     <%= f.button :submit, class: 'btn-primary' %>
