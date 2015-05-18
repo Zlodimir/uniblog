@@ -52,5 +52,5 @@ $ ->
   $('.upload').on('change', selectFileHandler)
 
   # Обработчики для всех кнопок 'Удалить' из списка аттачей
-  $('#files .btn-danger').each (index) ->
+  $('#files .btn-danger').each ->
     $(@).on('click', removeBtnHandler)
