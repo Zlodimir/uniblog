@@ -3,7 +3,7 @@ class Admin::ItemsController < Admin::BaseController
 
   def index
     @items = Item.order('created_at desc').page params[:page]
-    end
+  end
 
   def show
   end

@@ -46,7 +46,7 @@ $ ->
     count++
 
     # создаем новый input для кнопки 'Добавить файл'
-    addAttachBtn( count )
+    addAttachBtn(count)
 
   # Обработчик для кнопки 'Добавить файл'
   $('.upload').on('change', selectFileHandler)
